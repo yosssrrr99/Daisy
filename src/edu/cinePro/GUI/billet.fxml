@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="1044.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cinePro.GUI.BilletController">
+    <stylesheets>
+        <URL value="@billet.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="10.0" layoutY="9.0" prefHeight="601.0" prefWidth="1026.0" styleClass="right-bar">
+         <children>
+            <HBox alignment="CENTER" prefHeight="91.0" prefWidth="462.0">
+               <children>
+                  <Label contentDisplay="CENTER" prefHeight="44.0" prefWidth="123.0" text="Acheter" textAlignment="CENTER" textFill="#878787">
+                     <font>
+                        <Font name="Cambria" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" prefHeight="44.0" prefWidth="139.0" text="Billet" textAlignment="CENTER" textFill="#878787">
+                     <font>
+                        <Font name="Cambria Bold" size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Pane prefHeight="472.0" prefWidth="358.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox fx:id="movieInformation" alignment="CENTER" layoutX="30.0" prefHeight="450.0" prefWidth="366.0" styleClass="chosen-fruit-card">
+                     <children>
+                        <HBox prefHeight="46.0" prefWidth="266.0">
+                           <children>
+                              <Label fx:id="titreFilm" prefHeight="46.0" prefWidth="277.0" text="BLACKLIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="35.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets bottom="10.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ImageView fitHeight="100.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Blacklight.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="66.0" prefWidth="266.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <children>
+                              <Text fx:id="descriptionFilm" fill="WHITE" layoutX="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Travis Block intervient pour le compte du FBI lorsque toutes les autres options ontété épuisées. Ses méthodes impliquent souvent la manière forte." wrappingWidth="340.13671875" x="40.0" y="40.0">
+                                 <font>
+                                    <Font name="Cambria Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="17.0" prefWidth="266.0">
+                           <children>
+                              <Separator prefHeight="11.0" prefWidth="409.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="266.0">
+                           <children>
+                              <Label fx:id="dateReservation" prefHeight="34.0" prefWidth="199.0" text="Date:   06/03/2020" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="23.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets bottom="10.0" top="10.0" />
+                           </opaqueInsets>
+                        </HBox>
+                        <Separator prefHeight="11.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="40.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Label fx:id="heureReservation" prefHeight="34.0" prefWidth="141.0" text="Heure: 15:30" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                        </Label>
+                        <Separator prefHeight="11.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="40.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Label fx:id="salleReservation" prefHeight="34.0" prefWidth="123.0" text="Salle : A387" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fx:id="rightVbox" alignment="CENTER" layoutX="439.0" layoutY="30.0" prefHeight="368.0" prefWidth="558.0" styleClass="chosen-fruit-card">
+                     <children>
+                        <HBox prefHeight="46.0" prefWidth="266.0">
+                           <children>
+                              <Label fx:id="titreFilm1" prefHeight="44.0" prefWidth="608.0" text="Sélectionner les informations de votre billet :" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Cambria" size="25.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets bottom="10.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="587.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label prefHeight="34.0" prefWidth="144.0" text="Catégorie :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="27.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="categorieBillet" prefHeight="10.0" prefWidth="120.0" promptText="First Class" styleClass="comboBox" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="17.0" prefWidth="266.0">
+                           <children>
+                              <Separator prefHeight="11.0" prefWidth="288.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="266.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <children>
+                              <Label prefHeight="34.0" prefWidth="126.0" text="Nb place :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="27.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="nbPlaceBillet" />
+                           </children>
+                        </HBox>
+                        <Separator prefHeight="11.0" prefWidth="550.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="40.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Separator prefHeight="11.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="40.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Label fx:id="Total" prefHeight="34.0" prefWidth="141.0" text="Total : 0 TD" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="remise" prefHeight="34.0" prefWidth="170.0" text="Remise : 0 TD" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="prixFinalHT" prefHeight="34.0" prefWidth="230.0" text="Prix final HT : 0 TD" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="prixFinalTTC" prefHeight="34.0" prefWidth="236.0" text="Prix final TTC : 0 TD" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Button fx:id="reinitialiser" layoutX="476.0" layoutY="416.0" mnemonicParsing="false" onAction="#reinitialiserBillet" prefHeight="21.0" prefWidth="202.0" styleClass="add-btn" text="Réinitialiser" textFill="#828282">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="AcheterBillet" layoutX="731.0" layoutY="416.0" mnemonicParsing="false" onAction="#reserverBillet" prefHeight="21.0" prefWidth="202.0" styleClass="add-btn" text="Acheter" textFill="#828282">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+         <padding>
+            <Insets bottom="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
