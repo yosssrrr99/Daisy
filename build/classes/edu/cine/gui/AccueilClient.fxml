@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #7a0012;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.AccueilClientController">
+   <children>
+      <TableView fx:id="table" layoutX="51.0" layoutY="88.0" prefHeight="439.0" prefWidth="672.0">
+         <columns>
+            <TableColumn fx:id="fxid" prefWidth="110.0" text="idF" />
+            <TableColumn fx:id="nom" prefWidth="99.0" text="nomF" />
+            <TableColumn fx:id="gen" minWidth="6.0" prefWidth="119.0" text="Genre" />
+            <TableColumn fx:id="des" minWidth="0.0" prefWidth="123.0" text="Description" />
+            <TableColumn fx:id="dure" minWidth="0.0" prefWidth="101.0" text="duree" />
+            <TableColumn fx:id="editcol" minWidth="0.0" prefWidth="119.0" />
+         </columns>
+      </TableView>
+      <Button fx:id="arch" layoutX="730.0" layoutY="88.0" mnemonicParsing="false" onAction="#getarch" prefHeight="31.0" prefWidth="211.0" text="Archive" />
+   </children>
+</AnchorPane>

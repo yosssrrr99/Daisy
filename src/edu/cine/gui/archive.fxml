@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #7a0012;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="edu.cine.gui.ArchiveController">
+   <children>
+      <TableView fx:id="table" layoutX="61.0" layoutY="98.0" prefHeight="439.0" prefWidth="672.0">
+         <columns>
+            <TableColumn fx:id="fxid" prefWidth="110.0" text="idF" />
+            <TableColumn fx:id="nom" prefWidth="99.0" text="nomF" />
+            <TableColumn fx:id="gen" minWidth="6.0" prefWidth="119.0" text="Genre" />
+            <TableColumn fx:id="des" minWidth="0.0" prefWidth="123.0" text="Description" />
+            <TableColumn fx:id="dure" minWidth="0.0" prefWidth="101.0" text="duree" />
+            <TableColumn fx:id="editcol" minWidth="0.0" prefWidth="119.0" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
