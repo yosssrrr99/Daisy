@@ -53,8 +53,10 @@ public class ClientMethods {
                 C.setIdClient(res.getInt("idClient"));
                 C.setNom(res.getString("nom"));
                 C.setPrenom(res.getString("prenom"));
-                C.setDateDeNaissance(res.getDate("dateDeNaissance"));
+                C.setDateDeNaissance(res.getDate("DateNaiss"));
+                C.setUserName(res.getString("userName"));
                 C.setEmail(res.getString("email"));
+                C.setRole("role");
 
             }
 

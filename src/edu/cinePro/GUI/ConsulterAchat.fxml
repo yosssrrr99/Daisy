@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="563.0" prefWidth="1044.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cinePro.GUI.ConsulterAchatController">
+    <stylesheets>
+        <URL value="@consulterachat.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="ok" layoutX="120.0" layoutY="347.0" mnemonicParsing="false" onAction="#validerPan" prefHeight="25.0" prefWidth="113.0" text="valider panier" />
+      <Button fx:id="notOk" layoutX="371.0" layoutY="347.0" mnemonicParsing="false" onAction="#viderPan" prefHeight="17.0" prefWidth="113.0" text="vider panier" />
+      <Label fx:id="label" layoutX="24.0" layoutY="15.0" prefHeight="17.0" prefWidth="149.0" text="Label" />
+      <VBox layoutX="6.0" layoutY="68.0" prefHeight="263.0" prefWidth="592.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane fx:id="scroll" prefHeight="263.0" prefWidth="360.0">
+                     <content>
+                        <GridPane fx:id="grid">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Label fx:id="idProduit" layoutX="206.0" layoutY="17.0" text="1" />
+      <Label fx:id="idClient" layoutX="267.0" layoutY="17.0" text="8" />
+      <Label fx:id="nomPanier" layoutX="323.0" layoutY="17.0" text="panier salma" />
+      <Label fx:id="status" layoutX="414.0" layoutY="17.0" text="0" />
+      <Label fx:id="qt2" layoutX="480.0" layoutY="17.0" text="5" />
+      <Label fx:id="idBillet" layoutX="527.0" layoutY="15.0" text="3" />
+      <TextField fx:id="Liste" layoutX="27.0" layoutY="43.0" />
+   </children>
+</AnchorPane>

@@ -6,8 +6,10 @@
 package edu.cinePro.GUI;
 
 import edu.cinePro.entities.Followingproduit;
+import edu.cinePro.entities.Panier;
 import edu.cinePro.entities.Produit;
 import edu.cinePro.services.FollowingProduitMethods;
+import edu.cinePro.services.PanierCRUD;
 import edu.cinePro.services.ProduitMethods;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,9 +44,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
@@ -51,7 +56,11 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javax.swing.JOptionPane;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 
 /**
@@ -60,7 +69,7 @@ import org.controlsfx.control.textfield.TextFields;
  * @author Asus
  */
 public class ProductClientController implements Initializable {
-    
+
     @FXML
     private VBox chosenFruitCard;
     @FXML
@@ -89,7 +98,7 @@ public class ProductClientController implements Initializable {
         "f092b0", // pink
         "b7c0c7" // light gray
     };
-    
+
     private ProduitMethods PM = new ProduitMethods();
     private List<Produit> listProduit = PM.affichageProduits();
     private MyListener myListener;
@@ -121,7 +130,9 @@ public class ProductClientController implements Initializable {
     private Button parametreButton;
     @FXML
     private Button donationButton;
-    
+    @FXML
+    private ImageView listeAchat;
+
     private int setChosenFruit(Produit P) {
         String color = "";
         int quantiteEnStock = P.getQuantiteEnStock();
@@ -131,17 +142,17 @@ public class ProductClientController implements Initializable {
             valueFactory.setValue(1);
             quantiteProduit.setValueFactory(valueFactory);
         } else {
-            
+
             quantiteProduit.setDisable(true);
-            
+
         }
 
         // Randomly select a fact
         Random randomGenerator = new Random(); // Construct a new Random number generator
         int randomNumber = randomGenerator.nextInt(mColors.length);
-        
+
         color = mColors[randomNumber];
-        
+
         InputStream stream = null;
         try {
             fruitNameLable.setText(P.getDesignation());
@@ -189,7 +200,7 @@ public class ProductClientController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         ProduitMethods PM = new ProduitMethods();
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -211,31 +222,31 @@ public class ProductClientController implements Initializable {
                             setChosenFruit(P);
                         } else {
                             setChosenFruit(listProduit.get(0));
-                            
+
                         }
                         break;
                     default:
                         break;
-                    
+
                 }
             }
-            
+
         });
-        
+
         System.out.println(keyWord);
-        
+
         System.out.println(listProduit);
         if (listProduit.size() > 0) {
-            
+
             setChosenFruit(listProduit.get(0));
             myListener = new MyListener() {
-                
+
                 @Override
                 public void onClickListener(int IDproduit) {
-                    
+
                     Produit P = PM.recupProduit(IDproduit);
                     setChosenFruit(P);
-                    
+
                 }
             };
         }
@@ -243,7 +254,7 @@ public class ProductClientController implements Initializable {
         int column = 0;
         int row = 1;
         for (Produit P : listProduit) {
-            
+
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("UnProduit.fxml"));
@@ -254,7 +265,7 @@ public class ProductClientController implements Initializable {
                     column = 0;
                     row++;
                 }
-                
+
                 grid.add(anchorPane, column++, row); //(child,column,row)
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
@@ -265,15 +276,15 @@ public class ProductClientController implements Initializable {
                 grid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
-                
+
                 GridPane.setMargin(anchorPane, new Insets(10));
             } catch (IOException ex) {
                 System.out.println("ereur here");
             }
         }
-        
+
     }
-    
+
     @FXML
     private void searchProduct(ActionEvent event) {
         String keyWord = searchProductClient_ID.getText().trim().toLowerCase();
@@ -283,36 +294,68 @@ public class ProductClientController implements Initializable {
             setChosenFruit(P);
         } else {
             setChosenFruit(listProduit.get(0));
-            
+
         }
     }
-    
+
     @FXML
     private void ajouterProduitPanier(ActionEvent event) {
+        String idpan = "1";
+        int idProduit = parseInt(this.idProduitChosen.getText());
+        P = PM.recupProduit(idProduit);
+        String idproduit = String.valueOf(P.getIDProduit());
+        String idcl = "1";
+        String idB = "1";
+        String nompanier = "Panier";
+        String stat = "0";
+        String quantite = String.valueOf(quantiteProduit.getValue());
+
+        Panier p1 = new Panier(idpan, idproduit, idcl, idB, nompanier, stat, quantite);
+        PanierCRUD pc = new PanierCRUD();
+        pc.ajouterPanier(p1);
+        InputStream stream = null;
+        try {
+            stream = new FileInputStream("C:\\Users\\Asus\\Desktop\\CineProWithGUI\\src\\edu\\cinePro\\GUI\\images\\tick.png");
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+        Image image = new Image(stream);
+        ImageView img = new ImageView();
+        img.setImage(image);
+
+        Notifications notificationBuilder = Notifications.create()
+                .title("Produit ajoutée au panier avec succées. ")
+                .text("Si vous voulez Consulter votre panier .Cliquez la-haut")
+                .graphic(img)
+                .hideAfter(Duration.seconds(10))
+                .position(Pos.CENTER);
+
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
     }
-    
+
     @FXML
     private void followProduct(ActionEvent event) {
         int idProduit = parseInt(this.idProduitChosen.getText());
         FollowingProduitMethods FPM = new FollowingProduitMethods();
-        
+
         Followingproduit FP = new Followingproduit(idProduit, 1);
         FPM.ajouterFollowingproduit(FP);
-        
+
     }
-    
+
     @FXML
     private void showFilmsPage(ActionEvent event) {
     }
-    
+
     @FXML
     private void showPublicationPage(ActionEvent event) {
     }
-    
+
     @FXML
     private void showEvenementsPage(ActionEvent event) {
     }
-    
+
     @FXML
     private void showReservationPage(ActionEvent event) {
         FXMLLoader Loader = new FXMLLoader(getClass().getResource("billet.fxml"));
@@ -321,43 +364,63 @@ public class ProductClientController implements Initializable {
             Parent root = Loader.load();
             BilletController billets = Loader.getController();
             outOfStockLabel.getScene().setRoot(root);
+
         } catch (IOException ex) {
-            Logger.getLogger(BilletController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BilletController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     private void showSouvenirShopPage(ActionEvent event) {
-        
+
         FXMLLoader Loader = new FXMLLoader(getClass().getResource("productClient.fxml"));
 
         try {
             Parent root = Loader.load();
-            ProductClientController products  = Loader.getController();
+            ProductClientController products = Loader.getController();
             outOfStockLabel.getScene().setRoot(root);
+
         } catch (IOException ex) {
-            Logger.getLogger(ProductClientController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductClientController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
     @FXML
     private void showParametrePage(ActionEvent event) {
     }
-    
+
     @FXML
     private void showDonationButton(ActionEvent event) {
-        
-           FXMLLoader Loader = new FXMLLoader(getClass().getResource("don.fxml"));
+
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("don.fxml"));
 
         try {
             Parent root = Loader.load();
             DonController dons = Loader.getController();
             outOfStockLabel.getScene().setRoot(root);
+
         } catch (IOException ex) {
-            Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DonController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
+
+
+    @FXML
+    private void ConsulterListeAchat(MouseEvent event) {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("ConsulterAchat.fxml"));
+
+        try {
+            Parent root = loader.load();
+            ConsulterAchatController ac = loader.getController();
+            outOfStockLabel.getScene().setRoot(root);
+        } catch (IOException ex) {
+            //Logger.getLogger(ConsulterAchatController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

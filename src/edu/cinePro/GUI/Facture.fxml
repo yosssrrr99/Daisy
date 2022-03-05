@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="563.0" prefWidth="1044.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cinePro.GUI.FactureController">
+    <stylesheets>
+        <URL value="@facture.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="idPayer" layoutX="-6.0" layoutY="311.0" mnemonicParsing="false" onAction="#Paiement" prefHeight="32.0" prefWidth="155.0" />
+      <Button fx:id="rtr" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" text="Générer Facture" />
+      <Button fx:id="imp" layoutX="437.0" layoutY="312.0" mnemonicParsing="false" onAction="#imprimer" prefHeight="32.0" prefWidth="85.0" />
+      <TextField fx:id="idF" layoutX="3.0" layoutY="286.0" prefHeight="25.0" prefWidth="594.0" />
+      <ScrollPane fx:id="scroll" layoutX="70.0" layoutY="42.0" prefHeight="223.0" prefWidth="444.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="216.0" prefWidth="443.0">
+               <children>
+                  <Label fx:id="idFacture" layoutX="267.0" layoutY="14.0" prefHeight="17.0" prefWidth="125.0" text="Label">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Total" layoutX="266.0" layoutY="54.0" prefHeight="29.0" prefWidth="182.0" text="Label">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Date" layoutX="266.0" layoutY="94.0" prefHeight="17.0" prefWidth="163.0" text="Label">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="11.0" prefHeight="36.0" prefWidth="206.0" text="Réference Facture :">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="55.0" prefHeight="27.0" prefWidth="105.0" text="Total :">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="95.0" prefHeight="27.0" prefWidth="163.0" text="Date Payement :">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="img" fitHeight="72.0" fitWidth="201.0" layoutX="126.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/code%20barre.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <ImageView fx:id="impimg" fitHeight="32.0" fitWidth="70.0" layoutX="450.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/imprimante-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pay" fitHeight="32.0" fitWidth="73.0" layoutX="77.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/payer-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
