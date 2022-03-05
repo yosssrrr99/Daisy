@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cinePro.GUI.BilletPaiementController">
+    <stylesheets>
+        <URL value="@billetpaiement.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="563.0" prefWidth="1250.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@don.css" />
+         </stylesheets>
+         <children>
+            <BorderPane fx:id="BorderPane" layoutX="212.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <VBox layoutX="309.0" layoutY="14.0" prefHeight="542.0" prefWidth="842.0" style="-fx-background-color: #f0f0f0;" styleClass="right-bar">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="79.0" prefWidth="842.0">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="76.0" text="MON" textAlignment="CENTER" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="84.0" text="Billet" textAlignment="CENTER" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="51.0" prefWidth="842.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="20.0" layoutY="-3.0" prefHeight="4.0" prefWidth="800.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <styleClass>
+                              <String fx:value="search-box" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <HBox prefHeight="150.0" prefWidth="625.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox prefHeight="150.0" prefWidth="169.0">
+                           <children>
+                              <ImageView fx:id="filmImage" fitHeight="165.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/blacklight.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="150.0" prefWidth="369.0">
+                           <children>
+                              <Label fx:id="titreFilm" layoutX="10.0" layoutY="10.0" prefHeight="22.0" prefWidth="296.0" text="BLACKLIGHT">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="dateFilm" text="Date   :    08/03/2022">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="heureFilm" text="Heure    :    16:49">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Location  :   Centre ville de tunis">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="salleID" text="Salle   :    309">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="182.0" prefWidth="100.0" />
+                        <VBox prefHeight="182.0" prefWidth="86.0">
+                           <children>
+                              <Label fx:id="prixBilletInitial" prefHeight="30.0" prefWidth="76.0" text="17 DT">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="15.0" top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#deleteBillet" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/trash.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefHeight="30.0" prefWidth="815.0">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="3.0" right="15.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox prefHeight="61.0" prefWidth="625.0" style="-fx-border-color: gray;">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="61.0" prefWidth="127.0">
+                           <children>
+                              <Label text="Cout total">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="39.0" prefWidth="498.0" />
+                        <VBox alignment="CENTER" prefHeight="61.0" prefWidth="124.0">
+                           <children>
+                              <Label fx:id="prixBilletFinal" text="26 DT">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefHeight="30.0" prefWidth="645.0">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets right="15.0" top="3.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox prefHeight="123.0" prefWidth="842.0" style="-fx-border-color: gray;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="119.0" prefWidth="580.0">
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="525.0" text="Votre QRCode pour accéder à la salle de cinéma .">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" />
+                           </HBox.margin>
+                        </HBox>
+                        <VBox prefHeight="122.0" prefWidth="160.0">
+                           <children>
+                              <ImageView fitHeight="185.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/QRCode.jpg" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="30.0" top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="625.0">
+                     <children>
+                        <Button fx:id="payerBillerButton" mnemonicParsing="false" onAction="#payerBillet" prefHeight="44.0" prefWidth="202.0" styleClass="add-btn" text="Payer">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="528.0" prefWidth="204.0">
+               <children>
+                  <Button fx:id="nosFilmsButtons" contentDisplay="TOP" mnemonicParsing="false" onAction="#showFilmsPage" prefHeight="89.0" prefWidth="204.0" text="Nos Films">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/FilmIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="nosPublicationsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showPublicationPage" prefHeight="90.0" prefWidth="204.0" text="Nos Publications">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/publicationeIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="nosEvenementsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showEvenementsPage" prefHeight="90.0" prefWidth="204.0" text="Nos Evenements">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/eventeIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="réservationsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showReservationPage" prefHeight="90.0" prefWidth="204.0" text="Nos Réservations">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/reserve.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="shouvenirShopButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showSouvenirShopPage" prefHeight="90.0" prefWidth="204.0" text="Souvenir Shop">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/souvenirIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="donationButton" contentDisplay="TOP" layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#showDonationButton" prefHeight="90.0" prefWidth="204.0" text="Faire Un Don">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/donate-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="parametreButton" contentDisplay="TOP" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#showParametrePage" prefHeight="90.0" prefWidth="204.0" text="Paramétres">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/settingsIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

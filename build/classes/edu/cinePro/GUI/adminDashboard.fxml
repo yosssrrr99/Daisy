@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="563.0" prefWidth="1044.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cinePro.GUI.AdminDashboardController">
+    <stylesheets>
+        <URL value="@admindashboard.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane fx:id="anchorpane_center" layoutX="198.0" layoutY="23.0" prefHeight="523.0" prefWidth="836.0">
+         <children>
+            <AnchorPane fx:id="anchorpane_right2" layoutX="46.0" layoutY="274.0" prefHeight="232.0" prefWidth="353.0">
+               <children>
+                  <BarChart fx:id="barChart_ProfitabilitéProduit" layoutX="10.0" layoutY="14.0" prefHeight="200.0" prefWidth="330.0" title="Profitabilité Par Produit">
+                     <xAxis>
+                        <CategoryAxis fx:id="produit" label="Produit" side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="profitabilité" label="Profitabilité" side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorpane_right4" layoutX="45.0" layoutY="29.0" prefHeight="240.0" prefWidth="353.0">
+               <children>
+                  <PieChart fx:id="Pie_Produit_stock" layoutX="6.0" layoutY="8.0" prefHeight="224.0" prefWidth="341.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorpane_right3" layoutX="467.0" layoutY="28.0" prefHeight="224.0" prefWidth="353.0">
+               <children>
+                  <StackedBarChart fx:id="billetVendu_stackedChart" layoutX="1.0" prefHeight="240.0" prefWidth="341.0">
+                     <xAxis>
+                        <CategoryAxis fx:id="film" label="Film" prefHeight="18.0" prefWidth="304.0" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="billetVendu" label="Billets  Vendus" side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+               </children></AnchorPane>
+            <AnchorPane fx:id="anchorpane_right" layoutX="467.0" layoutY="274.0" prefHeight="224.0" prefWidth="353.0">
+               <children>
+                  <BarChart fx:id="quantiteVendu_produit_barChart" layoutX="12.0" prefHeight="230.0" prefWidth="330.0">
+                     <xAxis>
+                        <CategoryAxis fx:id="produitQVendu" label="Produit" prefHeight="22.0" prefWidth="252.0" side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="quantitéVendu_Produit" label="Quantité vendue" side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneFarRight" layoutX="23.0" layoutY="24.0" prefHeight="523.0" prefWidth="169.0" style="-fx-background-color: #5f687a;">
+         <children>
+            <ImageView fx:id="profileImage" fitHeight="111.0" fitWidth="167.0" layoutX="3.0" layoutY="7.0">
+               <image>
+                  <Image url="@../../../../../../Downloads/png-transparent-circle-silhouette-logo-user-user-profile-green-facial-expression-nose-cartoon-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="27.0" layoutY="139.0" prefHeight="27.0" prefWidth="121.0" text="Jimmy Fallow">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="188.0" text="Dashboard" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="223.0" text="Film" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="263.0" text="Evenement" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="305.0" text="Presse" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="348.0" text="Salle" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="393.0" text="Produit" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="434.0" text="Profile" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="479.0" text="Se deconnecter" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="111.0" fitWidth="167.0" layoutX="-2.0" layoutY="11.0">
+               <image>
+                  <Image url="@images/profile.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="186.0">
+               <image>
+                  <Image url="@images/dashboardIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="8.0" layoutY="221.0">
+               <image>
+                  <Image url="@images/movieIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="6.0" layoutY="261.0">
+               <image>
+                  <Image url="@images/eventIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="6.0" layoutY="303.0">
+               <image>
+                  <Image url="@images/presse.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="4.0" layoutY="344.0">
+               <image>
+                  <Image url="@images/salle.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="7.0" layoutY="389.0">
+               <image>
+                  <Image url="@images/produit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="8.0" layoutY="430.0">
+               <image>
+                  <Image url="@images/profileIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="477.0">
+               <image>
+                  <Image url="@images/exit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
