@@ -504,7 +504,7 @@ public class BilletMethods {
     public List<Object> recup_info_film(int idReservation) {
         List<Object> listeInfoFilm = new ArrayList<>();
         try {
-            String requete = "SELECT F.nomF,F.image,F.Description,R.idSa,date(R.dateDebut),Extract(HOUR from R.DateDebut),Extract(MINUTE from R.dateDebut) FROM film AS F,Salle AS S,reservation AS R WHERE R.idF = F.idF AND R.idSa = S.idSa AND R.idRes LIKE '%" + idReservation + "%'";
+            String requete = "SELECT F.nomF,F.image,F.Description,R.idSa,date(R.DateDeb),Extract(HOUR from R.DateDeb),Extract(MINUTE from R.DateDeb) FROM film AS F,Salle AS S,reservation AS R WHERE R.idF = F.idF AND R.idSa = S.idSa AND R.idRes LIKE '%" + idReservation + "%'";
 
             PreparedStatement prepare = laConnexion.prepareStatement(requete);
 
