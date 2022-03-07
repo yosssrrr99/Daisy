@@ -174,18 +174,28 @@ public class TestController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //CRON job remise 50% sur les produits lors de la periode du festival du JCC 
-//        Calendar calendar1 = Calendar.getInstance();
-//        calendar1.set(2022, 02, 01, 0, 0, 0);
-//        Date dateDebutJCC = calendar1.getTime();
-//        System.out.println(dateDebutJCC);
-//        Timer timer = new Timer();
-//        timer.scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                PM.PromotionPrixVente();
-//            }
-//        }, dateDebutJCC, 360 * 24 * 60 * 60 * 1000);
+//        CRON job remise 50% sur les produits lors de la periode du festival du JCC 
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.set(2022, 02, 8, 0, 0, 0);
+        Date dateDebutJCC = calendar1.getTime();
+        System.out.println(dateDebutJCC);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                PM.PromotionPrixVente();
+            }
+        }, dateDebutJCC, 360 * 24 * 60 * 60 * 1000);
+        
+        
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                PM.updateStockStatus();
+            }
+        }, 0, 1000);//1000 => une seconde delay entre l'execution du CRON mise à jour status stock 0 = epsuisé / 1 = en stock
+        
+        
         loadDate();
         refreshTable();
 

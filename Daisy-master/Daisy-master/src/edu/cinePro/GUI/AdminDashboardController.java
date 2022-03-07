@@ -173,7 +173,7 @@ public class AdminDashboardController implements Initializable {
         
         //bar chart for quantité produits vendues
      
-
+         quantiteVendu_produit_barChart.setTitle("Quantité vendue par produit");
               
         HashMap<String, Integer> produit_QuantiteVendueMap = PM.recupQuantiteVendu_Par_Produit();
 

@@ -149,18 +149,20 @@ public class ProduitMethods {
         List<Produit> myList = new ArrayList();
 
         Calendar calendar1 = Calendar.getInstance();
-        calendar1.set(2022, 01, 10, 0, 0, 0);
+        calendar1.set(2022, 02, 8, 0, 0, 0);
         Date dateDebutJCC = calendar1.getTime();
         System.out.print(dateDebutJCC);
 
         Calendar calendar2 = Calendar.getInstance();
-        calendar2.set(2022, 01, 18, 59, 59, 59);
+        calendar2.set(2022, 02, 18, 59, 59, 59);
         Date dateFinJCC = calendar2.getTime();
         System.out.print(dateFinJCC);
 
         LocalDateTime currentDate = LocalDateTime.now();
         Date convertedCurrentDate = Date.from(currentDate.atZone(ZoneId.systemDefault()).toInstant());
         System.out.println(convertedCurrentDate);
+        
+        
 
         if (dateDebutJCC.before(convertedCurrentDate) && dateFinJCC.after(convertedCurrentDate)) {
             myList = affichageProduits();
@@ -405,7 +407,7 @@ public class ProduitMethods {
 
         HashMap<String, Integer> QuantiteVenduMap = new HashMap<String, Integer>();
         try {
-            String requete = "SELECT Produit.IDProduit AS \"ID Produit \",Produit.Designation AS \"Designation produit \" ,SUM(Panier.quantite) AS \"Quantite vendue\"\n"
+            String requete = "SELECT Produit.IDProduit AS \"ID Produit \",Produit.Designation AS \"Designation produit \" ,SUM(Panier.quantite) AS \"Quantite\"\n"
                     + "FROM produit AS Produit ,panier AS Panier\n"
                     + "WHERE Produit.IDProduit LIKE Panier.IDProduit AND Panier.statusPanier LIKE 1\n"
                     + "GROUP BY (Produit.IDProduit)";
@@ -426,7 +428,7 @@ public class ProduitMethods {
         }
         for (Map.Entry<String, Integer> element : QuantiteVenduMap.entrySet()) {
 
-            System.out.println("Produit: " + element.getKey() + "  =>  Quantité vendue: " + element.getValue());
+            System.out.println("Produit: " + element.getKey() + "  =>  Quantité: " + element.getValue());
         }
         return QuantiteVenduMap;
 

@@ -19,6 +19,7 @@ import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -234,7 +235,8 @@ public class ProductClientController implements Initializable {
         });
 
         System.out.println(keyWord);
-
+        System.out.println(listProduit);
+        Collections.sort(listProduit);
         System.out.println(listProduit);
         if (listProduit.size() > 0) {
 

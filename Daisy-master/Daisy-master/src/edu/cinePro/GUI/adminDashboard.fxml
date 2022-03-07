@@ -38,9 +38,9 @@
             </AnchorPane>
             <AnchorPane fx:id="anchorpane_right3" layoutX="467.0" layoutY="28.0" prefHeight="224.0" prefWidth="353.0">
                <children>
-                  <StackedBarChart fx:id="billetVendu_stackedChart" layoutX="1.0" prefHeight="240.0" prefWidth="341.0">
+                  <StackedBarChart fx:id="billetVendu_stackedChart" layoutX="1.0" layoutY="16.0" prefHeight="224.0" prefWidth="341.0">
                      <xAxis>
-                        <CategoryAxis fx:id="film" label="Film" prefHeight="18.0" prefWidth="304.0" />
+                        <CategoryAxis fx:id="film" label="Film" prefHeight="62.0" prefWidth="263.0" />
                      </xAxis>
                      <yAxis>
                         <NumberAxis fx:id="billetVendu" label="Billets  Vendus" side="LEFT" />
@@ -49,12 +49,12 @@
                </children></AnchorPane>
             <AnchorPane fx:id="anchorpane_right" layoutX="467.0" layoutY="274.0" prefHeight="224.0" prefWidth="353.0">
                <children>
-                  <BarChart fx:id="quantiteVendu_produit_barChart" layoutX="12.0" prefHeight="230.0" prefWidth="330.0">
+                  <BarChart fx:id="quantiteVendu_produit_barChart" layoutX="12.0" layoutY="6.0" prefHeight="224.0" prefWidth="330.0">
                      <xAxis>
-                        <CategoryAxis fx:id="produitQVendu" label="Produit" prefHeight="22.0" prefWidth="252.0" side="BOTTOM" />
+                        <CategoryAxis fx:id="produitQVendu" label="Produit" prefHeight="68.0" prefWidth="252.0" side="BOTTOM" />
                      </xAxis>
                      <yAxis>
-                        <NumberAxis fx:id="quantitéVendu_Produit" label="Quantité vendue" side="LEFT" />
+                        <NumberAxis fx:id="quantitéVendu_Produit" label="Quantité" side="LEFT" />
                      </yAxis>
                   </BarChart>
                </children>

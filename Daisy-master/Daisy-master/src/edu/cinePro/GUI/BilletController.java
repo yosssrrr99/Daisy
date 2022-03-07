@@ -85,14 +85,6 @@ public class BilletController implements Initializable {
     private Label prixFinalHT;
     @FXML
     private Label prixFinalTTC;
-
-    BilletMethods BM = new BilletMethods();
-
-    ClientMethods CM = new ClientMethods();
-    ReservationCRUD RM = new ReservationCRUD();
-
-    Client C = CM.recupClient(1);
-    Reservation R = RM.recupReservation(1);
     @FXML
     private ImageView imageFilm;
     @FXML
@@ -112,16 +104,34 @@ public class BilletController implements Initializable {
     @FXML
     private Label genreFilm;
 
+    BilletMethods BM = new BilletMethods();
+
+    ClientMethods CM = new ClientMethods();
+    ReservationCRUD RM = new ReservationCRUD();
+
+    Client C = CM.recupClient(1);
+    Reservation R = RM.recupReservation(1);
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        //CRON job archivage billet
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                BM.archiverBillet();
+            }
+        }, 0, 24 * 60 * 60 * 1000);//24*60*60*1000 delay de 1 jours entre l'execution du CRON d'archivage
+
         System.out.println(BM.recup_info_film(1));
 
         titreFilm.setText(BM.recup_info_film(1).get(0).toString());
-        
+
         InputStream stream = null;
         try {
             stream = new FileInputStream(BM.recup_info_film(1).get(1).toString());
@@ -130,23 +140,15 @@ public class BilletController implements Initializable {
         }
         Image image = new Image(stream);
         imageFilm.setImage(image);
-        
-        descriptionFilm.setText(BM.recup_info_film(1).get(2).toString());
-        
-        genreFilm.setText("Genre : "+ BM.recup_info_film(1).get(3).toString());
-              
-        salleReservation.setText("Salle : " + BM.recup_info_film(1).get(4).toString());
-        
-        dateReservation.setText("Date : "+ BM.recup_info_film(1).get(5).toString());
 
-        //CRON pour l'archivage billet
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                BM.archiverBillet();
-            }
-        }, 0, 24 * 60 * 60 * 1000);//24*60*60*1000 delay de 1 jours entre l'execution du CRON d'archivage
+        descriptionFilm.setText(BM.recup_info_film(1).get(2).toString());
+
+        genreFilm.setText("Genre : " + BM.recup_info_film(1).get(3).toString());
+
+        salleReservation.setText("Salle : " + BM.recup_info_film(1).get(4).toString());
+
+        dateReservation.setText("Date : " + BM.recup_info_film(1).get(5).toString());
+
 
         ObservableList<String> list = FXCollections.observableArrayList("First Class", "Second Class", "Third Class");
         categorieBillet.setItems(list);
@@ -166,7 +168,7 @@ public class BilletController implements Initializable {
                 float discount = BM.Remise(C, R, totale);
                 remise.setText("Remise : " + String.valueOf(discount) + " TD");
                 float prixFinalHorsTaxe = BM.prixFinalHT(totale, discount);
-                
+
                 prixFinalHT.setText("Prix Final HT : " + String.valueOf(prixFinalHorsTaxe) + " TD");
                 float prixFinaleTTC = BM.prixFinalTTC(prixFinalHorsTaxe);
                 DecimalFormat f = new DecimalFormat("##.00");

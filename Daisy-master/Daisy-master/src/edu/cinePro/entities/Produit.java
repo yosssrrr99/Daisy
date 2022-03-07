@@ -136,9 +136,9 @@ public class Produit implements Comparable<Produit> {
 
     @Override
     public int compareTo(Produit o) {
-        if (this.calculateProductProfit(this) - o.calculateProductProfit(o)>0)
+        if (o.calculateProductProfit(o)-this.calculateProductProfit(this)>0)
             return 1;
-        else if ((this.calculateProductProfit(this) - o.calculateProductProfit(o)==0))
+        else if ((o.calculateProductProfit(o)-this.calculateProductProfit(this)==0))
             return 0;
         else return -1;
     }
