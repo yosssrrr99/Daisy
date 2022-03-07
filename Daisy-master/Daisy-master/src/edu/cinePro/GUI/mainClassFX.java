@@ -32,9 +32,9 @@ public class mainClassFX extends Application {
 //
 //            root = FXMLLoader.load(getClass().getResource("tableView.fxml"));
 //            primaryStage.setTitle("produit_admin_GUI");
-
-            root = FXMLLoader.load(getClass().getResource("productClient.fxml"));
-            primaryStage.setTitle("produit_client_GUI");
+//
+//            root = FXMLLoader.load(getClass().getResource("productClient.fxml"));
+//            primaryStage.setTitle("produit_client_GUI");
 //
 //            root = FXMLLoader.load(getClass().getResource("billet.fxml"));
 //            primaryStage.setTitle("billet_GUI");

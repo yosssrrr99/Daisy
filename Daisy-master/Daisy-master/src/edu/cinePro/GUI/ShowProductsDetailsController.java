@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,7 +94,11 @@ public class ShowProductsDetailsController implements Initializable {
         productDetailsDescription.setText(P.getDescription());
         productDetailsPA.setText(String.valueOf(P.getPrixAchatUnit()));
         productDetailPV.setText(String.valueOf(P.getPrixVenteUnit()));
-        productDetailsProfitabilité.setText(String.valueOf(P.calculateProductProfit(P)));
+
+        double d = P.calculateProductProfit(P);
+        DecimalFormat f = new DecimalFormat("0.00");
+        System.out.println(f.format(d));
+        productDetailsProfitabilité.setText(String.valueOf(f.format(d)));
         productDetailsStock.setText(String.valueOf(P.getQuantiteEnStock()));
         InputStream stream = new FileInputStream(P.getImage());
         Image image = new Image(stream);
