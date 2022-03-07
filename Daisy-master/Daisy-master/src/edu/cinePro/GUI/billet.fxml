@@ -92,26 +92,23 @@
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="35.0" prefWidth="266.0">
-                           <children>
-                              <Label fx:id="dateReservation" prefHeight="34.0" prefWidth="199.0" text="Date:   06/03/2020" textFill="WHITE">
-                                 <font>
-                                    <Font name="Cambria" size="23.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="15.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
                            <opaqueInsets>
                               <Insets bottom="10.0" top="10.0" />
                            </opaqueInsets>
+                           <children>
+                              <Label fx:id="genreFilm" prefHeight="34.0" prefWidth="141.0" text="Genre : Action" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="23.0" />
+                                 </font>
+                              </Label>
+                           </children>
                         </HBox>
                         <Separator prefHeight="11.0" prefWidth="200.0">
                            <VBox.margin>
                               <Insets left="40.0" right="40.0" />
                            </VBox.margin>
                         </Separator>
-                        <Label fx:id="heureReservation" prefHeight="34.0" prefWidth="141.0" text="Heure: 15:30" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="dateReservation" prefHeight="34.0" prefWidth="199.0" text="Date:   06/03/2020" textFill="WHITE">
                            <font>
                               <Font name="Cambria" size="23.0" />
                            </font>

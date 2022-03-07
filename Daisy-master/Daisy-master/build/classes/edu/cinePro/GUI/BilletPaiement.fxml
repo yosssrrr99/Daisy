@@ -85,7 +85,7 @@
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="heureFilm" text="Heure    :    16:49">
+                              <Label fx:id="genreFilm" text="Genre    :    Action">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>

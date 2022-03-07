@@ -111,7 +111,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneFarRight" layoutX="13.0" layoutY="26.0" prefHeight="523.0" prefWidth="169.0" style="-fx-background-color: #5f687a;">
+      <AnchorPane fx:id="paneFarRight" layoutX="14.0" layoutY="26.0" prefHeight="523.0" prefWidth="169.0" style="-fx-background-color: #5f687a;">
          <children>
             <ImageView fx:id="profileImage" fitHeight="111.0" fitWidth="167.0" layoutX="3.0" layoutY="7.0">
                <image>
@@ -123,42 +123,42 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="188.0" text="Dashboard" textFill="#f2eeee">
+            <Label fx:id="dashboardPage" layoutX="51.0" layoutY="188.0" onMouseClicked="#showDashboardPage" text="Dashboard" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="223.0" text="Film" textFill="#f2eeee">
+            <Label fx:id="FilmPage" layoutX="51.0" layoutY="223.0" onMouseClicked="#showFilmPage" text="Film" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="263.0" text="Evenement" textFill="#f2eeee">
+            <Label fx:id="EvenementPage" layoutX="51.0" layoutY="263.0" onMouseClicked="#showEvenementPage" text="Evenement" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="305.0" text="Presse" textFill="#f2eeee">
+            <Label fx:id="PressePage" layoutX="51.0" layoutY="305.0" onMouseClicked="#showPressePage" text="Presse" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="348.0" text="Salle" textFill="#f2eeee">
+            <Label fx:id="SalleID" layoutX="51.0" layoutY="348.0" onMouseClicked="#showSallePage" text="Salle" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="393.0" text="Produit" textFill="#f2eeee">
+            <Label fx:id="ProduitPage" layoutX="51.0" layoutY="393.0" onMouseClicked="#showProduitPage" text="Produit" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="434.0" text="Profile" textFill="#f2eeee">
+            <Label fx:id="ProfilePage" layoutX="51.0" layoutY="434.0" onMouseClicked="#showProfilePage" text="Profile" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="479.0" text="Se deconnecter" textFill="#f2eeee">
+            <Label fx:id="seDeconnecter" layoutX="51.0" layoutY="479.0" onMouseClicked="#signOut" text="Se deconnecter" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -208,6 +208,7 @@
                   <Image url="@images/exit.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

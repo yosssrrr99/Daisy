@@ -52,6 +52,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -62,6 +63,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -153,6 +155,22 @@ public class TestController implements Initializable {
     private AutoCompletionBinding<String> autoCompletionBinding;
     private String[] Possible_Suggestions = {"Orange", "Kiwi"};
     private Set<String> possibleSuggestions = new HashSet<>(Arrays.asList(Possible_Suggestions));
+    @FXML
+    private Label dashboardPage;
+    @FXML
+    private Label FilmPage;
+    @FXML
+    private Label EvenementPage;
+    @FXML
+    private Label PressePage;
+    @FXML
+    private Label SalleID;
+    @FXML
+    private Label ProduitPage;
+    @FXML
+    private Label ProfilePage;
+    @FXML
+    private Label seDeconnecter;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -611,5 +629,55 @@ public class TestController implements Initializable {
         message.setContent(htmlCode, "text/html");
         return message;
 
+    }
+
+    @FXML
+    private void showDashboardPage(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("adminDashboard.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            AdminDashboardController dashboard = Loader.getController();
+            quantiteStockText.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void showFilmPage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showEvenementPage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showPressePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showSallePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showProduitPage(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("tableView.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            TestController produits = Loader.getController();
+            quantiteStockText.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void showProfilePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void signOut(MouseEvent event) {
     }
 }

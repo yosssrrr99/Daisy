@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -291,9 +292,10 @@ public class BilletMethods {
     //remise GUI billet
     public float Remise(Client C, Reservation R, float total) {
         float remise = 0;
+        LocalDate date = LocalDate.now();
 
         //Promotion special anniversaire
-        if ((R.getDateDebut().getMonth() == C.getDateDeNaissance().getMonth()) && (R.getDateDebut().getDate() == C.getDateDeNaissance().getDate())) {
+        if ((date.getMonthValue() == C.getDateDeNaissance().getMonth()) && (date.getDayOfMonth() == C.getDateDeNaissance().getDate())) {
             remise += 25 * total / 100;
         }
         System.out.println(nbAchat_FirstClass_parClient(C.getIdClient()));
@@ -316,16 +318,15 @@ public class BilletMethods {
     public float calculRemise(Billet B) {
         float remise = 0;
 
-        //recupération Evenement
-        ReservationCRUD RC = new ReservationCRUD();
-        Reservation R = RC.recupReservation(B.getIdReservation());
-
         //récuperation client
         ClientMethods CM = new ClientMethods();
         Client C = CM.recupClient(B.getIdClient());
+        
+        LocalDate date = LocalDate.now();
+        
 
         //Promotion special anniversaire
-        if ((R.getDateDebut().getMonth() == C.getDateDeNaissance().getMonth()) && (R.getDateDebut().getDate() == C.getDateDeNaissance().getDate())) {
+        if ((date.getMonthValue() == C.getDateDeNaissance().getMonth()) && (date.getDayOfMonth() == C.getDateDeNaissance().getDate())) {
             remise += 25 * prixBilletInitial(B) / 100;
         }
 
@@ -504,7 +505,9 @@ public class BilletMethods {
     public List<Object> recup_info_film(int idReservation) {
         List<Object> listeInfoFilm = new ArrayList<>();
         try {
-            String requete = "SELECT F.nomF,F.image,F.Description,R.idSa,date(R.DateDeb),Extract(HOUR from R.DateDeb),Extract(MINUTE from R.DateDeb) FROM film AS F,Salle AS S,reservation AS R WHERE R.idF = F.idF AND R.idSa = S.idSa AND R.idRes LIKE '%" + idReservation + "%'";
+            String requete = "SELECT F.nomF,F.image,F.Description,F.Genre,R.idSa,R.DateDeb\n"
+                    + "FROM film AS F,Salle AS S,reservation AS R \n"
+                    + "WHERE R.idF = F.idF AND R.idSa = S.idSa AND R.idRes LIKE '%" + idReservation + "%'";
 
             PreparedStatement prepare = laConnexion.prepareStatement(requete);
 
@@ -522,16 +525,14 @@ public class BilletMethods {
                 String description = res.getString(3);
                 listeInfoFilm.add(description);
 
-                Date dateProjectionFilm = res.getDate(5);
-                listeInfoFilm.add(dateProjectionFilm);
+                String genre = res.getString(4);
+                listeInfoFilm.add(genre);
 
-                int heureProjectionFilm = res.getInt(6);
-                listeInfoFilm.add(heureProjectionFilm);
-
-                int minuteProjectionFilm = res.getInt(7);
-                listeInfoFilm.add(minuteProjectionFilm);
-                int idSalle = res.getInt(4);
+                int idSalle = res.getInt(5);
                 listeInfoFilm.add(idSalle);
+
+                String DateDeb = res.getString(6);
+                listeInfoFilm.add(DateDeb);
 
             }
         } catch (SQLException ex) {

@@ -7,20 +7,29 @@ package edu.cinePro.GUI;
 
 import edu.cinePro.services.BilletMethods;
 import edu.cinePro.services.ProduitMethods;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -49,6 +58,36 @@ public class AdminDashboardController implements Initializable {
     private CategoryAxis produitQVendu;
     @FXML
     private BarChart<?, ?> quantiteVendu_produit_barChart;
+    @FXML
+    private AnchorPane anchorpane_center;
+    @FXML
+    private AnchorPane anchorpane_right2;
+    @FXML
+    private AnchorPane anchorpane_right4;
+    @FXML
+    private AnchorPane anchorpane_right3;
+    @FXML
+    private AnchorPane anchorpane_right;
+    @FXML
+    private AnchorPane paneFarRight;
+    @FXML
+    private ImageView profileImage;
+    @FXML
+    private Label dashboardPage;
+    @FXML
+    private Label FilmPage;
+    @FXML
+    private Label EvenementPage;
+    @FXML
+    private Label PressePage;
+    @FXML
+    private Label SalleID;
+    @FXML
+    private Label ProduitPage;
+    @FXML
+    private Label ProfilePage;
+    @FXML
+    private Label seDeconnecter;
 
     /**
      * Initializes the controller class.
@@ -147,6 +186,56 @@ public class AdminDashboardController implements Initializable {
         }
 
         quantiteVendu_produit_barChart.getData().addAll(series2);
+    }
+
+    @FXML
+    private void showDashboardPage(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("adminDashboard.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            AdminDashboardController dashboard = Loader.getController();
+            quantiteVendu_produit_barChart.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void showFilmPage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showEvenementPage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showPressePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showSallePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void showProduitPage(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("tableView.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            TestController produits = Loader.getController();
+            quantiteVendu_produit_barChart.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void showProfilePage(MouseEvent event) {
+    }
+
+    @FXML
+    private void signOut(MouseEvent event) {
     }
 
 }

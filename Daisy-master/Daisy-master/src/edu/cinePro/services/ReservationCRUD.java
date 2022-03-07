@@ -44,8 +44,8 @@ public class ReservationCRUD {
                 R.setCategorie(res.getString("Categorie"));
                 R.setIdEv(res.getInt("idEv"));
                 R.setIdF(res.getInt("idF"));
-                R.setDateDebut(res.getTimestamp("DateDeb"));
-                R.setDateFin(res.getTimestamp("DateFin"));
+                R.setDateDebut(res.getString("DateDeb"));
+                R.setDateFin(res.getString("DateFin"));
                 R.setNbPlace(res.getInt("NbPlace"));
             }
 

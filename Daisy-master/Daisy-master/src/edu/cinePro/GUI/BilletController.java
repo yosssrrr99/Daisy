@@ -64,8 +64,6 @@ public class BilletController implements Initializable {
     @FXML
     private Label dateReservation;
     @FXML
-    private Label heureReservation;
-    @FXML
     private Label salleReservation;
     @FXML
     private VBox movieInformation;
@@ -111,14 +109,19 @@ public class BilletController implements Initializable {
     private Button donationButton;
     @FXML
     private Button parametreButton;
+    @FXML
+    private Label genreFilm;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        System.out.println(BM.recup_info_film(1));
 
         titreFilm.setText(BM.recup_info_film(1).get(0).toString());
+        
         InputStream stream = null;
         try {
             stream = new FileInputStream(BM.recup_info_film(1).get(1).toString());
@@ -127,14 +130,14 @@ public class BilletController implements Initializable {
         }
         Image image = new Image(stream);
         imageFilm.setImage(image);
+        
         descriptionFilm.setText(BM.recup_info_film(1).get(2).toString());
-        dateReservation.setText("Date : " + BM.recup_info_film(1).get(3).toString());
-        String minute = BM.recup_info_film(1).get(5).toString();
-        if (parseInt(BM.recup_info_film(1).get(5).toString()) <= 9) {
-            minute = ":" + minute;
-        }
-        heureReservation.setText("Heure : " + BM.recup_info_film(1).get(4).toString() + ":" + BM.recup_info_film(1).get(5).toString());
-        salleReservation.setText("Salle : " + BM.recup_info_film(1).get(6).toString());
+        
+        genreFilm.setText("Genre : "+ BM.recup_info_film(1).get(3).toString());
+              
+        salleReservation.setText("Salle : " + BM.recup_info_film(1).get(4).toString());
+        
+        dateReservation.setText("Date : "+ BM.recup_info_film(1).get(5).toString());
 
         //CRON pour l'archivage billet
         Timer timer = new Timer();

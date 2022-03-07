@@ -39,8 +39,8 @@ public class mainClassFX extends Application {
 //            root = FXMLLoader.load(getClass().getResource("billet.fxml"));
 //            primaryStage.setTitle("billet_GUI");
 
-//            root = FXMLLoader.load(getClass().getResource("adminDashboard.fxml"));
-//            primaryStage.setTitle("admin_Panel_GUI");
+            root = FXMLLoader.load(getClass().getResource("adminDashboard.fxml"));
+            primaryStage.setTitle("admin_Panel_GUI");
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("tableView.css").toExternalForm());

@@ -20,8 +20,8 @@ public class Reservation {
     private int idF;
     private int idSa;
     private int NbPlace;
-    private Timestamp dateDebut;
-    private Timestamp dateFin;
+    private String dateDebut;
+    private String dateFin;
     
 
     public Reservation() {
@@ -35,7 +35,7 @@ public class Reservation {
         this.NbPlace = NbPlace;
     }
 
-    public Reservation(int idRes, String Categorie, int idEv, int idF, int idSa, int NbPlace, Timestamp dateDebut, Timestamp dateFin) {
+    public Reservation(int idRes, String Categorie, int idEv, int idF, int idSa, int NbPlace, String dateDebut, String dateFin) {
         this.idRes = idRes;
         this.Categorie = Categorie;
         this.idEv = idEv;
@@ -46,11 +46,11 @@ public class Reservation {
         this.dateFin = dateFin;
     }
 
-    public void setDateDebut(Timestamp dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public void setDateFin(Timestamp dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
     
@@ -108,11 +108,11 @@ public class Reservation {
         this.NbPlace = NbPlace;
     }
 
-    public Timestamp getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public Timestamp getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 

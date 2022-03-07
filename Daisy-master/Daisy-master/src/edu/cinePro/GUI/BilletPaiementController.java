@@ -60,7 +60,6 @@ public class BilletPaiementController implements Initializable {
     private Label titreFilm;
     @FXML
     private Label dateFilm;
-    @FXML
     private Label heureFilm;
     @FXML
     private Label salleID;
@@ -86,6 +85,8 @@ public class BilletPaiementController implements Initializable {
     private Button parametreButton;
     Billet B;
     BilletMethods BM = new BilletMethods();
+    @FXML
+    private Label genreFilm;
 
     /**
      * Initializes the controller class.
@@ -111,6 +112,7 @@ public class BilletPaiementController implements Initializable {
         this.B = B;
         System.out.println(B);
         titreFilm.setText(detailsBillets.get(0).toString());
+        
         InputStream stream = null;
         try {
             stream = new FileInputStream(detailsBillets.get(1).toString());
@@ -120,13 +122,11 @@ public class BilletPaiementController implements Initializable {
         Image image = new Image(stream);
         filmImage.setImage(image);
 
-        dateFilm.setText("Date   :    " + detailsBillets.get(3).toString());
-        String minute = detailsBillets.get(5).toString();
-        if (parseInt(detailsBillets.get(5).toString()) <= 9) {
-            minute = "0" + minute;
-        }
-        heureFilm.setText("Heure   :    " + detailsBillets.get(4).toString() + " : " + minute);
-        salleID.setText("Salle   :    " + detailsBillets.get(6).toString());
+        dateFilm.setText("Date   :    " + detailsBillets.get(5).toString());
+        
+        genreFilm.setText("Genre   :    " + detailsBillets.get(3).toString());
+        
+        salleID.setText("Salle   :    " + detailsBillets.get(4).toString());
         System.out.println(B);
         prixBilletInitial.setText(BM.prixBilletInitial(B) + " DT");
         prixBilletFinal.setText(BM.prixBilletTTC(B) + " DT");
