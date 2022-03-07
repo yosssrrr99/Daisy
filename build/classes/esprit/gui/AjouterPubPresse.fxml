@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1304.0" style="-fx-background-color: #D3D3D3;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.gui.AjouterPubPresseController">
+    <stylesheets>
+        <URL value="@ajouterpubpresse.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="-1.0" prefHeight="136.0" prefWidth="1318.0" style="-fx-background-color: #5f687a #5f687a #5f687a;">
+         <children>
+            <Text fill="WHITE" layoutX="501.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une publication" underline="true">
+               <font>
+                  <Font name="Calibri Bold" size="37.0" />
+               </font>
+            </Text>
+         </children></Pane>
+      <Button fx:id="btnAjout" layoutX="278.0" layoutY="739.0" mnemonicParsing="false" onAction="#AjouterPub" prefHeight="42.0" prefWidth="96.0" text="Ajouter">
+         <font>
+            <Font name="Calibri" size="19.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="samahni" layoutX="225.0" layoutY="630.0" prefHeight="84.0" prefWidth="326.0" promptText="veuillez ajouter une description" />
+      <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="1282.0" layoutY="43.0" onMouseClicked="#close" size="20" styleClass="btn" text="" />
+      <Button fx:id="br" layoutX="465.0" layoutY="588.0" mnemonicParsing="false" onAction="#browse" prefHeight="31.0" prefWidth="79.0" text="Browse" />
+      <ImageView fx:id="imageView" fitHeight="191.0" fitWidth="279.0" layoutX="225.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="idP" layoutX="332.0" layoutY="242.0" prefHeight="37.0" prefWidth="197.0" promptText="veuillez entrer votre id" />
+      <Text layoutX="225.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Votre id:">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="imgUrl" layoutX="225.0" layoutY="586.0" prefHeight="31.0" prefWidth="226.0" />
+      <Text layoutX="225.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajoutez votre photo: ">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Text>
+      <TableView fx:id="table" layoutX="572.0" layoutY="346.0" prefHeight="438.0" prefWidth="722.0">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="72.0" text="idPub" />
+            <TableColumn fx:id="tr" prefWidth="97.0" text="titre" />
+            <TableColumn fx:id="img" minWidth="0.0" prefWidth="121.0" text="image" />
+            <TableColumn fx:id="txt1" prefWidth="127.0" text="texte" />
+            <TableColumn fx:id="date" prefWidth="158.0" text="date de création" />
+            <TableColumn fx:id="archive" prefWidth="82.0" text="archive" />
+            <TableColumn fx:id="editcol" prefWidth="66.0" />
+            <TableColumn fx:id="idp" prefWidth="66.0" />
+         </columns>
+      </TableView>
+      <TextField fx:id="search" layoutX="574.0" layoutY="286.0" prefHeight="27.0" prefWidth="221.0" promptText="Rechercher......................................" style="-fx-border-radius: 50;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <FontAwesomeIconView fx:id="refresh" glyphName="REFRESH" layoutX="1253.0" layoutY="310.0" onMouseClicked="#refreshTable" size="25" styleClass="btn" text="" />
+      <Button fx:id="modif" layoutX="431.0" layoutY="739.0" mnemonicParsing="false" onAction="#ModifierPub" prefHeight="42.0" prefWidth="96.0" text="Modifier" />
+      <FontAwesomeIconView fx:id="e1" glyphName="EDIT" layoutX="1208.0" layoutY="312.0" onMouseClicked="#getPub" size="25" text="" />
+      <Text layoutX="225.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre:">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tit" layoutX="332.0" layoutY="293.0" prefHeight="37.0" prefWidth="197.0" promptText="veuillez entrer le titre" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="765.0" layoutY="307.0" onMouseClicked="#search" size="20" />
+      <AnchorPane fx:id="paneFarRight" layoutY="2.0" prefHeight="827.0" prefWidth="170.0" style="-fx-background-color: #5f687a;">
+         <children>
+            <ImageView fx:id="profileImage" fitHeight="111.0" fitWidth="167.0" layoutX="3.0" layoutY="7.0">
+               <image>
+                  <Image url="@../../../../../../Downloads/Downloads/png-transparent-circle-silhouette-logo-user-user-profile-green-facial-expression-nose-cartoon-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="27.0" layoutY="139.0" prefHeight="27.0" prefWidth="121.0" text="Jimmy Fallow">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="188.0" text="Dashboard" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="305.0" text="Presse" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="434.0" text="Profile" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="479.0" text="Se deconnecter" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="111.0" fitWidth="167.0" layoutX="-2.0" layoutY="11.0">
+               <image>
+                  <Image url="@images/profile.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="186.0">
+               <image>
+                  <Image url="@images/dashboardIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="6.0" layoutY="303.0">
+               <image>
+                  <Image url="@images/presse.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="8.0" layoutY="430.0">
+               <image>
+                  <Image url="@images/profileIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="477.0">
+               <image>
+                  <Image url="@../../../../../../Downloads/PIDEV_GIT/PIDEV_GIT/src/edu/cinePro/GUI/images/exit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

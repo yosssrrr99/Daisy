@@ -1,0 +1,26 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.pub{
+    -fx-background-color: #5f687a;
+    -fx-background-radius: 30;
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.scroll-pane > .viewport{
+    
+        -fx-background-color: #D3D3D3;
+
+} 
+
+.scroll-pane{
+    -fx-background-color: #D3D3D3;
+    
+    
+}

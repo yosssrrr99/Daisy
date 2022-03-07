@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="840.0" prefWidth="1325.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.gui.DetailController">
+    <stylesheets>
+        <URL value="@detail.css" />
+    </stylesheets>
+   <children>
+      <Text layoutX="316.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detail de la publication" textAlignment="CENTER" wrappingWidth="341.6708984375">
+         <font>
+            <Font name="Cambria Bold" size="31.0" />
+         </font>
+      </Text>
+      <Label layoutX="37.0" layoutY="149.0" prefHeight="27.0" prefWidth="121.0" text="Jimmy Fallow">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="198.0" text="Dashboard" textFill="#f2eeee">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="315.0" text="Presse" textFill="#f2eeee">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="444.0" text="Profile" textFill="#f2eeee">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="489.0" text="Se deconnecter" textFill="#f2eeee">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="19.0" layoutY="196.0">
+         <image>
+            <Image url="@images/dashboardIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="16.0" layoutY="313.0">
+         <image>
+            <Image url="@images/presse.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="18.0" layoutY="440.0">
+         <image>
+            <Image url="@images/profileIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="19.0" layoutY="487.0">
+         <image>
+            <Image url="@images/exit.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="167.0" layoutX="13.0" layoutY="17.0">
+         <image>
+            <Image url="@images/profile.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="256.0" layoutY="145.0" prefHeight="640.0" prefWidth="502.0">
+         <children>
+            <ImageView fx:id="imgpub1" fitHeight="425.0" fitWidth="452.0" layoutX="24.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="59.0" layoutY="473.0" prefHeight="30.0" prefWidth="155.0" text="ID publication :" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="idpp" layoutX="234.0" layoutY="478.0" text="Label" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="758.0" layoutY="168.0" prefHeight="653.0" prefWidth="510.0">
+         <children>
+            <Label fx:id="tit1" layoutX="220.0" layoutY="70.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="datee" layoutX="328.0" layoutY="402.0" text="Label">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font></Label>
+            <Text fx:id="desc1" fontSmoothingType="LCD" layoutX="143.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="zdzad zad  zaddkpa,kdpoazkdpozadkpoazdkpoazdkpoazkdpoazdkapzodkapozdkpoazkdpzaodddddddddddddd" wrappingWidth="293.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Label layoutX="323.0" layoutY="558.0" text="Revenir à la page initiale" textFill="#4d5463">
+               <font>
+                  <Font name="System Bold" size="13.5" />
+               </font>
+            </Label>
+            <Button fx:id="retour" layoutX="350.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#Retour" opacity="0.0" prefHeight="47.0" prefWidth="112.0" text="Button" />
+            <ImageView fitHeight="47.0" fitWidth="61.0" layoutX="384.0" layoutY="511.0" onMouseClicked="#Retour" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/goBackProductPage.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <Text fx:id="tit" layoutX="899.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre:" underline="true" wrappingWidth="77.00000762939453">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="descrip" layoutX="899.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" underline="true" wrappingWidth="120.99998474121094">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="date" layoutX="899.0" layoutY="584.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de creation:" underline="true" wrappingWidth="182.00000762939453">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="paneFarRight" layoutX="-3.0" layoutY="-2.0" prefHeight="884.0" prefWidth="191.0" style="-fx-background-color: #5f687a;">
+         <children>
+            <ImageView fx:id="profileImage" fitHeight="111.0" fitWidth="167.0" layoutX="3.0" layoutY="7.0">
+               <image>
+                  <Image url="@../../../../../../Downloads/Downloads/png-transparent-circle-silhouette-logo-user-user-profile-green-facial-expression-nose-cartoon-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="27.0" layoutY="139.0" prefHeight="27.0" prefWidth="121.0" text="Jimmy Fallow">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="188.0" text="Dashboard" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="305.0" text="Presse" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="434.0" text="Profile" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="479.0" text="Se deconnecter" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="186.0">
+               <image>
+                  <Image url="@images/dashboardIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="6.0" layoutY="303.0">
+               <image>
+                  <Image url="@images/presse.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="8.0" layoutY="430.0">
+               <image>
+                  <Image url="@images/profileIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="477.0">
+               <image>
+                  <Image url="@images/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="111.0" fitWidth="167.0" layoutX="3.0" layoutY="7.0">
+               <image>
+                  <Image url="@images/profile.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

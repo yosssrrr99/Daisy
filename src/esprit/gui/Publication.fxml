@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="389.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.gui.PublicationController">
+    <stylesheets>
+        <URL value="@publication.css" />
+    </stylesheets>
+   <children>
+      <VBox fx:id="vbox" layoutX="-1.0" onMouseClicked="#getId" prefHeight="521.0" prefWidth="389.0" styleClass="publication" />
+      <Label fx:id="titre" layoutX="186.0" layoutY="66.0" text="Label" textFill="#f2efef">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Text fx:id="description" fill="WHITE" fontSmoothingType="LCD" layoutX="32.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="zdzad zad  zaddkpa,kdpoazkdpozadkpoazdkpoazdkpoazkdpoazdkapzodkapozdkpoazkdpzaodddddddddddddd" wrappingWidth="339.0000057220459">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imaage" fitHeight="279.0" fitWidth="294.0" layoutX="58.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="datee" layoutX="36.0" layoutY="33.0" text="Label" textFill="#fcfafa">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fx:id="signal" fill="WHITE" glyphName="EXCLAMATION_TRIANGLE" layoutX="349.0" layoutY="33.0" onMouseClicked="#Signal" size="30" />
+      <Label fx:id="idpubb" layoutX="35.0" layoutY="7.0" text="Label" textFill="#fcfafa" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

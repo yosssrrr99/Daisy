@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="626.0" prefWidth="1311.0" style="-fx-background-color: #D3D3D3;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.gui.AfficherPubClientController">
+    <stylesheets>
+        <URL value="@afficherpubclient.css" />
+    </stylesheets>
+   <children>
+      <FontAwesomeIconView glyphName="CLOSE" layoutX="1263.0" layoutY="42.0" onMouseClicked="#close" size="20" styleClass="btn" text="" />
+      <Button fx:id="nosFilmsButtons" contentDisplay="TOP" layoutY="-1.0" mnemonicParsing="false" onAction="#showFilmsPage" prefHeight="89.0" prefWidth="204.0" text="Nos Films">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/FilmIcone.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="nosPublicationsButton" contentDisplay="TOP" layoutY="88.0" mnemonicParsing="false" onAction="#showPublicationPage" prefHeight="90.0" prefWidth="204.0" text="Nos Publications">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/publicationeIcone.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="nosEvenementsButton" contentDisplay="TOP" layoutY="182.0" mnemonicParsing="false" onAction="#showEvenementsPage" prefHeight="90.0" prefWidth="204.0" text="Nos Evenements">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/eventeIcone.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="réservationsButton" contentDisplay="TOP" layoutY="272.0" mnemonicParsing="false" onAction="#showReservationPage" prefHeight="90.0" prefWidth="204.0" text="Nos Réservations">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/reserve.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="shouvenirShopButton" contentDisplay="TOP" layoutY="362.0" mnemonicParsing="false" onAction="#showSouvenirShopPage" prefHeight="90.0" prefWidth="204.0" text="Souvenir Shop">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/souvenirIcone.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="donationButton" contentDisplay="TOP" layoutY="454.0" mnemonicParsing="false" onAction="#showDonationButton" prefHeight="90.0" prefWidth="204.0" text="Faire Un Don">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/donate-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="parametreButton" contentDisplay="TOP" layoutY="546.0" mnemonicParsing="false" onAction="#showParametrePage" prefHeight="90.0" prefWidth="204.0" text="Paramétres">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/settingsIcone.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <HBox layoutX="1004.0" layoutY="17.0" prefHeight="51.0" prefWidth="235.0">
+         <children>
+            <Label contentDisplay="CENTER" prefHeight="71.0" prefWidth="238.0" text="Publications archivées" textAlignment="CENTER" textFill="#878787">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fx:id="archive" glyphName="ARCHIVE" onMouseClicked="#archives" size="55" text="" wrappingWidth="57.0" />
+         </children>
+      </HBox>
+      <ImageView fitHeight="78.0" fitWidth="149.0" layoutX="204.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/donationeIcon.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="239.0" layoutY="82.0" prefHeight="554.0" prefWidth="1040.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="628.0" prefWidth="846.0" styleClass="transparent">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="7.0" prefWidth="111.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

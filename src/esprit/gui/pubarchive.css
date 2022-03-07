@@ -1,0 +1,19 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.scroll-pane > .viewport{
+    
+        -fx-background-color: #D3D3D3;
+
+} 
+
+.scroll-pane{
+    -fx-background-color: #D3D3D3;
+    
+    
+}
