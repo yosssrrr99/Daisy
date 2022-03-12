@@ -30,6 +30,11 @@ public class Avis {
         this.commentaire=commentaire;
     }
 
+    public Avis(float nbEtoile) {
+        this.nbEtoile=nbEtoile;
+        
+    }
+
     public int getIdC() {
         return idC;
     }

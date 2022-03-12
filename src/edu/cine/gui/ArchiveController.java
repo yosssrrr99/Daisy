@@ -73,7 +73,8 @@ public class ArchiveController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loadDate();
-        
+        archiveFilm();
+        SupprimerFilmEtat();
     }   
       
 
@@ -394,6 +395,32 @@ ObservableList<Avis> avisListe = FXCollections.observableArrayList();
     }
     
     
-  
+   public void SupprimerFilmEtat() {
+        List<Film> listeFilm = new ArrayList<Film>();
+        listeFilm = afficheFilm2();
+
+        Date date = new Date();
+        Timestamp currentDate = new Timestamp(date.getTime());
+        System.out.println(currentDate.getDay());
+        
+        listeFilm.stream()
+                //si depasser akther men aam 
+                .filter(f -> f.getDateDispo().getDay() - currentDate.getDay() >7 )
+                .forEach((P) -> {
+                    
+                    try {
+                        
+                        String requete = "DELETE FROM film WHERE EtatAcc='en attente' ";
+                        
+                        Statement st = cnx.createStatement();
+                        st.executeUpdate(requete);
+                        
+                        
+
+                    } catch (SQLException e) {
+                        System.out.println("erreur");
+                    }
+                });
+    }
     
 }

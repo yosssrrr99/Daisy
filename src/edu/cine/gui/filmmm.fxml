@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="705.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="edu.cine.gui.FilmmmController">
+    <stylesheets>
+        <URL value="@filmmm.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="68.0" layoutY="47.0" prefHeight="588.0" prefWidth="403.0" styleClass="yy" />
+      <Label fx:id="idff" layoutX="118.0" layoutY="10.0" text="Label" visible="false" />
+      <Label layoutX="119.0" layoutY="371.0" prefHeight="34.0" prefWidth="144.0" text="Durée:" textFill="#fcf6f6" underline="true">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="res" layoutX="157.0" layoutY="521.0" mnemonicParsing="false" onAction="#ajouterProduitPanier" prefHeight="21.0" prefWidth="202.0" styleClass="add-btn" text="Réserver" textFill="#828282">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Button>
+      <Text fx:id="des" fill="#f5eeee" layoutX="75.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" bonjour bonjour acyion jeunesse comédie " textAlignment="CENTER" wrappingWidth="284.13671875" x="40.0" y="40.0">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="titre" layoutX="121.0" layoutY="50.0" prefHeight="40.0" prefWidth="218.0" text="Noura Réve" textFill="#fcf7f7">
+         <font>
+            <Font name="Cambria" size="32.0" />
+         </font>
+      </Label>
+      <Separator layoutX="148.0" layoutY="488.0" prefHeight="11.0" prefWidth="200.0" />
+      <ImageView fx:id="image" fitHeight="153.0" fitWidth="298.0" layoutX="121.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
+      <Separator layoutX="149.0" layoutY="452.0" prefHeight="11.0" prefWidth="200.0" />
+      <Label fx:id="idres" layoutX="118.0" layoutY="10.0" prefHeight="22.0" prefWidth="50.0" text="Label" textFill="#363030" visible="false" />
+      <Label fx:id="du" layoutX="209.0" layoutY="375.0" text="17" textFill="#fcf6f6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="dated" layoutX="208.0" layoutY="431.0" text="17-12-2020" textFill="#fffefe" />
+      <Label fx:id="datef" layoutX="214.0" layoutY="467.0" text="21/10/2088" textFill="#f2f2f2" />
+      <Label layoutX="119.0" layoutY="246.0" text="Description:" textFill="#f8f7f7" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="251.0" layoutY="370.0" text="en minutes" textFill="#f8f3f3" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="118.0" layoutY="336.0" text="Moyenne d'avis:" textFill="WHITE" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="263.0" layoutY="339.0" text="5.0" textFill="#f8f3f3" />
+      <Label layoutX="133.0" layoutY="590.0" text="Ajouter Avis:" textFill="#eeeaea" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="av" layoutX="261.0" layoutY="588.0" prefHeight="31.0" prefWidth="56.0" />
+      <Button layoutX="344.0" layoutY="588.0" mnemonicParsing="false" onAction="#ajouterAvis" text="Ajouter avis" />
+   </children>
+</AnchorPane>

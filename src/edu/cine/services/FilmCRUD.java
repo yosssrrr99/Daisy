@@ -6,6 +6,7 @@
 package edu.cine.services;
 
 import edu.cine.entities.Film;
+import edu.cine.entities.Reservation;
 import edu.cine.utils.MyConnection;
 import java.sql.Connection;
 import java.util.Date;
@@ -83,17 +84,16 @@ public class FilmCRUD {
         
     }
  
-    public void modifierFilm(int idF,String nomF, String Genre, boolean Archive, String EtatAcc, int NumRea, String Image, String Description, int duree) {
+    public void modifierFilm(int idF,String nomF, String Genre,String img,  int NumRea,  String Description, int duree) {
         
         
         try {
             String req = "UPDATE film SET "
                     + "nomF = ?, "
                     + "Genre = ?, "
-                    + "Archive = ?, "
-                    + "EtatAcc = ?, "
+                    
                     + "NumRea = ?, "
-                    + "Image = ?, "
+                   + "Image = ?, "
                     + "Description = ?, "
                     + "duree = ? "
                     + "WHERE idF = ?";
@@ -101,13 +101,12 @@ public class FilmCRUD {
             PreparedStatement prepare = cnx.prepareStatement(req);
             prepare.setString(1, nomF);
             prepare.setString(2, Genre);
-            prepare.setBoolean(3, Archive);
-            prepare.setString(4, EtatAcc);
-            prepare.setInt(5, NumRea);
-            prepare.setString(6, Image);
-            prepare.setString(7, Description);
-            prepare.setInt(8, duree);
-           prepare.setInt(9, idF);
+            
+            prepare.setInt(3, NumRea);
+            prepare.setString(4, img);
+            prepare.setString(5, Description);
+            prepare.setInt(6, duree);
+           prepare.setInt(7, idF);
 
             prepare.executeUpdate();
             System.out.println("modification du film ");
@@ -119,43 +118,159 @@ public class FilmCRUD {
         }
         
     }
-     public List<Film> afficheFilm() {
-        List<Film> listeFilm = new ArrayList();
+     public List<List<String>> afficheFilm() {
+        List<List<String>> liste = new ArrayList<>();
         try {
-            String requete = "SELECT * FROM Film WHERE Archive=0 and EtatAcc='accepté' ";
+            String requete = "select film.*,reservation.DateDeb,reservation.DateFin,reservation.idRes\n" +
+             "from film,reservation\n" +
+              "where film.idF=reservation.idF";
             Statement st = cnx.createStatement();
-            ResultSet res = st.executeQuery(requete);
-
-            while (res.next()) {
-                Film f = new Film();
-
-               f.setNomF(res.getString("NomF"));
-               f.setGenre(res.getString("Genre"));
-               f.setArchive(res.getBoolean("Archive"));
-               f.setEtatAcc(res.getString("EtatAcc"));
-               f.setNumRea(res.getInt("NumRea"));
-               f.setImage(res.getString("Image"));
-               f.setDescription(res.getString("Description"));
-               f.setDateDispo(res.getTimestamp("DateDispo"));
-               f.setDuree(res.getInt("duree"));
-               listeFilm.add(f);
+            ResultSet rs = st.executeQuery(requete);
+           
+            
+            while (rs.next()) {
+                 List<String> listString = new ArrayList<>();
+                
+                listString.add(rs.getString("nomF"));
+                listString.add(rs.getString("Genre"));
+                listString.add(rs.getString("Archive"));
+                listString.add(rs.getString("EtatAcc"));
+                listString.add(rs.getString("NumRea"));
+                listString.add(rs.getString("Image"));
+                 listString.add(rs.getString("Duree"));
+                listString.add(rs.getString("Description"));
+                listString.add(rs.getString("idRes"));
+                listString.add(rs.getString("DateDeb"));
+                listString.add(rs.getString("DateFin"));
+                listString.add(rs.getString("idF"));
+                //System.out.println("bonjour");
+                
+                liste.add(listString);
+               
             }
         } catch (SQLException ex) {
-            System.out.println("mochkla");
+            System.out.println("houssem");
             System.out.println(ex.getMessage());
         }
-        return listeFilm;
+        return liste;
     }
-     public List<Film> afficheFilmArchivé() {
-        List<Film> listeFilm = new ArrayList();
+          public List<List<String>> afficheFilmMail() {
+        List<List<String>> liste = new ArrayList<>();
         try {
-            String requete = "SELECT * FROM Film WHERE Archive=1 ";
+            String requete = "select film.*,reservation.DateDeb,reservation.DateFin,reservation.idRes, avis.MoyenneAvis from film,reservation,avis where film.idF=reservation.idF and avis.idF = film.idF Group by idF";
             Statement st = cnx.createStatement();
-            ResultSet res = st.executeQuery(requete);
+            ResultSet rs = st.executeQuery(requete);
+           
+            
+            while (rs.next()) {
+                 List<String> listString = new ArrayList<>();
+                
+                listString.add(rs.getString("nomF"));
+                listString.add(rs.getString("Genre"));
+                listString.add(rs.getString("Archive"));
+                listString.add(rs.getString("EtatAcc"));
+                listString.add(rs.getString("NumRea"));
+                listString.add(rs.getString("Image"));
+                 listString.add(rs.getString("Duree"));
+                listString.add(rs.getString("Description"));
+                listString.add(rs.getString("idRes"));
+                listString.add(rs.getString("DateDeb"));
+                listString.add(rs.getString("DateFin"));
+                listString.add(rs.getString("idF"));
+                listString.add(rs.getString("MoyenneAvis"));
+                //System.out.println("bonjour");
+                
+                liste.add(listString);
+               
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("mochkla");
+            System.out.println(ex.getMessage());
+        }
+        return liste;
+    }
+           public List<List<String>> afficheMail() {
+        List<List<String>> liste = new ArrayList<>();
+        try {
+            String requete = "SELECT film.*,compte.mail from film,compte,client,realisateur where film.NumRea = realisateur.NumRea and compte.userName=client.userName and client.idC=realisateur.idC";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+           
+            
+            while (rs.next()) {
+                 List<String> listString = new ArrayList<>();
+                
+                listString.add(rs.getString("nomF"));
+                listString.add(rs.getString("Genre"));
+                listString.add(rs.getString("Archive"));
+                listString.add(rs.getString("EtatAcc"));
+                listString.add(rs.getString("NumRea"));
+                listString.add(rs.getString("Image"));
+                 listString.add(rs.getString("Duree"));
+                listString.add(rs.getString("Description"));
+                listString.add(rs.getString("mail"));
+               
+                //System.out.println("bonjour");
+                
+                liste.add(listString);
+               
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("mochkla");
+            System.out.println(ex.getMessage());
+        }
+        return liste;
+    }
+            public List<List<String>> afficheArch() {
+        List<List<String>> liste = new ArrayList<>();
+        try {
+            String requete = "select film.*, reservation.DateDeb,reservation.DateFin,reservation.idRes from film  ,reservation  where film.idF=reservation.idF   and Archive=1";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+           
+            
+            while (rs.next()) {
+                 List<String> listString = new ArrayList<>();
+                
+                listString.add(rs.getString("nomF"));
+                listString.add(rs.getString("Genre"));
+                listString.add(rs.getString("Archive"));
+                listString.add(rs.getString("EtatAcc"));
+                listString.add(rs.getString("NumRea"));
+                listString.add(rs.getString("Image"));
+                 listString.add(rs.getString("Duree"));
+                listString.add(rs.getString("Description"));
+                listString.add(rs.getString("idRes"));
+                listString.add(rs.getString("DateDeb"));
+                listString.add(rs.getString("DateFin"));
+                listString.add(rs.getString("idF"));
+                //System.out.println("bonjour");
+                
+                liste.add(listString);
+               
+            }
+        } catch (SQLException ex) {
+            System.out.println("mochkla");
+            System.out.println(ex.getMessage());
+        }
+        return liste;
+    }
+          
+
+     public Film recupFilm(int IDFilm) {
+        Film f = new Film();
+
+        try {
+            String requete = "SELECT * FROM film WHERE idF = ?";
+            PreparedStatement prepare = cnx.prepareStatement(requete);
+            prepare.setInt(1, IDFilm);
+
+            ResultSet res = prepare.executeQuery();
 
             while (res.next()) {
-                Film f = new Film();
-
+                f.setIdF(res.getInt("idF"));
                f.setNomF(res.getString("NomF"));
                f.setGenre(res.getString("Genre"));
                f.setArchive(res.getBoolean("Archive"));
@@ -165,14 +280,26 @@ public class FilmCRUD {
                f.setDescription(res.getString("Description"));
                f.setDateDispo(res.getTimestamp("DateDispo"));
                f.setDuree(res.getInt("duree"));
-               listeFilm.add(f);
+               
             }
+
         } catch (SQLException ex) {
-            System.out.println("mochkla");
             System.out.println(ex.getMessage());
         }
-        return listeFilm;
-     }
+        return f;
+    }
+              
+//               f.setNomF(res.getString("NomF"));
+//               f.setGenre(res.getString("Genre"));
+//               f.setArchive(res.getBoolean("Archive"));
+//               f.setEtatAcc(res.getString("EtatAcc"));
+//               f.setNumRea(res.getInt("NumRea"));
+//               f.setImage(res.getString("Image"));
+//               f.setDescription(res.getString("Description"));
+//               f.setDateDispo(res.getTimestamp("DateDispo"));
+//               f.setDuree(res.getInt("duree"));
+//               listeFilm.add(f);
+        
      
      public List<Film> afficheFilm2() {
         List<Film> listeFilm = new ArrayList();
@@ -183,7 +310,7 @@ public class FilmCRUD {
 
             while (res.next()) {
                 Film f = new Film();
-
+              f.setIdF(res.getInt("idF"));
                f.setNomF(res.getString("NomF"));
                f.setGenre(res.getString("Genre"));
                f.setArchive(res.getBoolean("Archive"));
@@ -201,6 +328,7 @@ public class FilmCRUD {
         }
         return listeFilm;
      }
+     
      
      
       public void supprimerFilm(int idF) {

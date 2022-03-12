@@ -3,32 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/services/RealisateurCRUD.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/Clientt.fxml</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/FXMain.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AccController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Client.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AfficherMoyController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/utils/MyConnection.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Film.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/TotoController.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AjouterfController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Compte.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/services/ReservationCRUD.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Reservation.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Realisateur.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AccueilController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/services/AvisCRUD.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Salle.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/FilmController.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AccueilClientController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/services/FilmCRUD.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AfficherMoy.fxml</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/entities/Avis.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/javamain.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/Main.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AjouterRController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/ReservaController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/Reservationnn.fxml</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/tests/MainClass.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/Acc.fxml</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/archive.fxml</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Cine/src/edu/cine/gui/AfficherMoyController.java</file>
         </group>
     </open-files>
 </project-private>

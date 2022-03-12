@@ -5,6 +5,7 @@
  */
 package edu.cine.gui;
 
+import edu.cine.entities.Film;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -26,13 +27,16 @@ public class FXMain extends Application {
     public void start(Stage primaryStage) {
       Parent root;
         try {
-           // root = FXMLLoader.load(getClass().getResource("Acc.fxml"));
+            
+  //root = FXMLLoader.load(getClass().getResource("ajouterf.fxml"));
            
           
-        //root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
-            root = FXMLLoader.load(getClass().getResource("AccueilClient.fxml"));
+   //root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+        //root = FXMLLoader.load(getClass().getResource("Clientt.fxml"));
+      root = FXMLLoader.load(getClass().getResource("Toto.fxml"));
+         
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Ajouter Film");
+            primaryStage.setTitle("Consulter Film");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
@@ -50,6 +54,7 @@ public class FXMain extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+         
     }
     
 }

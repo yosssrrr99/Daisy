@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" stylesheets="@arch.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.ArchController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="20.0" layoutY="10.0" maxHeight="694.0" prefHeight="610.0" prefWidth="1497.0" styleClass="mainFxmlClass" stylesheets="&#10;           &#10;         ">
+         <children>
+            <HBox layoutX="572.0" prefHeight="65.0" prefWidth="652.0" AnchorPane.leftAnchor="572.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Pane prefHeight="65.0" prefWidth="357.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox layoutX="548.0" layoutY="79.0" prefHeight="73.0" prefWidth="699.0" stylesheets="@clientt.css">
+               <children>
+                  <VBox prefHeight="77.0" prefWidth="332.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="208.0" layoutY="72.0" prefHeight="528.0" prefWidth="1431.0">
+               <children>
+                  <ScrollPane fx:id="scroll" prefHeight="528.0" prefWidth="1074.0" styleClass="transparent" stylesheets="@clientt.css">
+                     <content>
+                        <GridPane fx:id="grid" prefHeight="7.0" prefWidth="111.0">
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                           </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <VBox prefHeight="528.0" prefWidth="204.0">
+               <children>
+                  <Button fx:id="nosFilmsButtons" contentDisplay="TOP" mnemonicParsing="false" onAction="#showFilmsPage" prefHeight="91.0" prefWidth="204.0" stylesheets="@clientt.css" text="Nos Films">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/FilmIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="nosPublicationsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showPublicationPage" prefHeight="90.0" prefWidth="204.0" stylesheets="@clientt.css" text="Nos Publications">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/publicationeIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="nosEvenementsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showEvenementsPage" prefHeight="90.0" prefWidth="204.0" stylesheets="@clientt.css" text="Nos Evenements">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/eventeIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="réservationsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showReservationPage" prefHeight="90.0" prefWidth="204.0" stylesheets="@clientt.css" text="Nos Réservations">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/reserve.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="shouvenirShopButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#showSouvenirShopPage" prefHeight="90.0" prefWidth="204.0" stylesheets="@clientt.css" text="Souvenir Shop">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/souvenirIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="donationButton" contentDisplay="TOP" layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#showDonationButton" prefHeight="90.0" prefWidth="204.0" stylesheets="@clientt.css" text="Faire Un Don">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/donate-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="parametreButton" contentDisplay="TOP" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#showParametrePage" prefHeight="312.0" prefWidth="204.0" stylesheets="@clientt.css" text="Paramétres">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/settingsIcone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="237.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/donationeIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

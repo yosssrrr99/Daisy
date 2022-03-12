@@ -11,11 +11,17 @@ import java.sql.Date;
  *
  * @author DELL
  */
-public class Realisateur  {
+public class Realisateur  extends Compte{
     private int idC;
     private int NumRea;
     private String NomOrg;
     private String UserName;
+
+    public Realisateur(int NumRea,String mail) {
+        super(mail);
+        this.NumRea = NumRea;
+    }
+    
 
     public Realisateur() {
     }
@@ -32,6 +38,7 @@ public class Realisateur  {
         this.NomOrg = NomOrg;
         this.UserName = UserName;
     }
+    
 
     public String getUserName() {
         return UserName;

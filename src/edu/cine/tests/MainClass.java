@@ -9,10 +9,12 @@ import edu.cine.entities.Avis;
 import edu.cine.entities.Film;
 import edu.cine.entities.Realisateur;
 import edu.cine.entities.Reservation;
+import edu.cine.gui.AccueilController;
 import edu.cine.services.AvisCRUD;
 import edu.cine.services.FilmCRUD;
 import edu.cine.services.RealisateurCRUD;
 import edu.cine.services.ReservationCRUD;
+import edu.cine.services.mail;
 import edu.cine.utils.MyConnection;
 import java.time.LocalDate;
 import java.sql.Date;
@@ -24,7 +26,7 @@ import java.util.List;
  * @author DELL
  */
 public class MainClass {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //ajouter film suppression ajout insertion affichage archive
         //MyConnection mc = new MyConnection();
         FilmCRUD fc = new FilmCRUD();
@@ -33,10 +35,10 @@ public class MainClass {
        //Film f1= new Film("regardemoi", "action", true , "accepté", 2, "img","yahki aalik");
         //fc.ajouterFilm2(f2);
       //fc.modifierFilm(2, "ons", "action", true, "accepté", 2, "img","actionnnnnnn");
-     // List<Film> listFilm = fc.afficheFilm2();
-       //for(Film f2: listFilm){
-         // System.out.println(f2);
-      //}
+//      List<Film> listFilm = fc.afficheFilm2();
+//       for(Film f2: listFilm){
+//         System.out.println(f2);
+//      }
      //fc.archiveFilm();
        //fc.supprimerFilm(8);
        //fc.SupprimerFilmEtat();
@@ -55,9 +57,9 @@ public class MainClass {
         //Reservation r = new Reservation();
        // java.sql.Date newDate1 = new java.sql.Date(date1.getTime());
         //System.out.println(newDate1);
-     //Reservation r = new Reservation("evenement", 1, 8, 4, 50, date1, date2);
-     Reservation r = new Reservation("film", 1, 8, 4, 50, "22-12-2020", "22-10-2021");
-     rc.ajouterRes(r);
+     //Reservation r = new Reservation("evenement", 2, 11, 2, 50, "gg", "bbbb");
+    // Reservation r = new Reservation("film", 1, 8, 4, 50, "22-12-2020", "22-10-2021");
+     //rc.ajouterRes(r);
      //rc.modifierRes(12, "film", 1, 8, 4, 60, LocalDate.of(2020, 02, 23), LocalDate.of(2020, 02, 25));
       //rc.annulerRes(13);
     // List<Reservation> listRes = rc.afficheRes();
@@ -73,14 +75,14 @@ public class MainClass {
        //for(Avis av:listAv){
          //  System.out.println(av);
        //}
-       //int a= ac.AfficherMaxMoy();
-        //System.out.println(a);
+//       int a= ac.AfficherMaxMoy();
+//        System.out.println(a);
        // List<Avis> lili =ac.AfficherMaxMoy2();
         //f//or(Avis av:lili){
            //System.out.println(av);
        //}
-       ac.AfficherMaxMoy2();
-       //ac.calculAvis();
+       //ac.AfficherMaxMoy2();
+       ac.calculAvis();
      //ac.AfdicheTop();
       RealisateurCRUD rcc=new RealisateurCRUD();
        //Realisateur r =  new Realisateur(1, "Cactus");
@@ -92,10 +94,11 @@ public class MainClass {
          //  System.out.println(r);
        //}
       // fc.SupprimerFilmEtat();
+      
        
+      // mail.sendMail("sahnounidriss888@gmail.com");
        
-       
-  
+        System.out.println(fc.afficheMail());
       
     }
 }

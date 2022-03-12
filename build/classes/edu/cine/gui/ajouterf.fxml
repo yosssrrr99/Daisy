@@ -1,35 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #7a0012;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.AjouterfController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.AjouterfController">
    <children>
-      <TextField fx:id="fxNum" layoutX="153.0" layoutY="81.0" />
-      <Label layoutX="26.0" layoutY="86.0" text="Num Réalisateur:" textFill="#ebe5e5" />
-      <Label layoutX="70.0" layoutY="136.0" text="Nom Film:" textFill="#ebe5e5" />
-      <TextField fx:id="fxNom" layoutX="153.0" layoutY="131.0" />
-      <Label fx:id="fxG" layoutX="83.0" layoutY="234.0" text="Genre:" textFill="#ebe5e5" />
-      <RadioButton fx:id="btnAct" layoutX="160.0" layoutY="234.0" mnemonicParsing="false" onAction="#getGenre" text="Action" textFill="#f5ecec">
+      <AnchorPane fx:id="paneFarRight" layoutX="-3.0" prefHeight="846.0" prefWidth="265.0" style="-fx-background-color: #5f687a;">
+         <children>
+            <ImageView fx:id="profileImage" fitHeight="111.0" fitWidth="167.0" layoutX="35.0" layoutY="14.0">
+               <image>
+                  <Image url="@../../../../../../../Downloads/png-transparent-circle-silhouette-logo-user-user-profile-green-facial-expression-nose-cartoon-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="27.0" layoutY="139.0" prefHeight="27.0" prefWidth="187.0" text="Monsieur Réalisateurs">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="223.0" onMouseClicked="#getFil" text="Film" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="263.0" onMouseClicked="#geta" text="Film Archivé" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="307.0" text="Profile" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="353.0" text="Se deconnecter" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="111.0" fitWidth="167.0" layoutX="35.0" layoutY="14.0">
+               <image>
+                  <Image url="@images/profile.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="8.0" layoutY="221.0">
+               <image>
+                  <Image url="@images/movieIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="6.0" layoutY="261.0">
+               <image>
+                  <Image url="@images/eventIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="305.0">
+               <image>
+                  <Image url="@images/profileIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="351.0">
+               <image>
+                  <Image url="@images/exit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="table" layoutX="641.0" layoutY="160.0" prefHeight="680.0" prefWidth="945.0">
+         <columns>
+            <TableColumn fx:id="idid" prefWidth="59.0" text="Id" />
+            <TableColumn fx:id="nom" prefWidth="143.0" text="Nom du film" />
+            <TableColumn fx:id="gen" prefWidth="90.0" text="Genre" />
+            <TableColumn fx:id="dure" minWidth="6.0" prefWidth="79.0" text="durée" />
+            <TableColumn fx:id="date" minWidth="0.0" prefWidth="156.0" text="Date de Création" />
+            <TableColumn fx:id="des" minWidth="0.0" prefWidth="187.0" text="Description" />
+            <TableColumn fx:id="Arch" minWidth="0.0" prefWidth="187.0" text="Image" />
+            <TableColumn fx:id="edittt" minWidth="0.0" prefWidth="187.0" />
+         </columns>
+      </TableView>
+      <TextField fx:id="s" layoutX="641.0" layoutY="118.0" onAction="#search" prefHeight="27.0" prefWidth="221.0" promptText="Rechercher......................................" style="-fx-border-radius: 50;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="831.0" layoutY="120.0">
+         <image>
+            <Image url="@images/loop.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="284.0" layoutY="29.0" text="Ajouter demande d'un film" textFill="#1b1a1a">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fx:id="refresh" fill="#1b1a1a" glyphName="REFRESH" layoutX="1542.0" layoutY="147.0" onMouseClicked="#refreshr" size="45" text="" wrappingWidth="32.428571701049805" />
+      <FontAwesomeIconView />
+      <FontAwesomeIconView fx:id="h1" fill="#171616" glyphName="EDIT" layoutX="1481.0" layoutY="148.0" onMouseClicked="#getedit" size="45" />
+      <TextField fx:id="fxNum" layoutX="393.0" layoutY="122.0" prefHeight="31.0" prefWidth="202.0" />
+      <TextField fx:id="fxNom" layoutX="394.0" layoutY="178.0" prefHeight="31.0" prefWidth="202.0" />
+      <TextField fx:id="fxDuree" layoutX="394.0" layoutY="226.0" prefHeight="31.0" prefWidth="202.0" />
+      <RadioButton fx:id="btnAct" layoutX="404.0" layoutY="265.0" mnemonicParsing="false" onAction="#getGenre" text="Action" textFill="#1e1c1c">
          <toggleGroup>
             <ToggleGroup fx:id="Genre" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="btnDra" layoutX="247.0" layoutY="234.0" mnemonicParsing="false" onAction="#getGenre" text="Drame" textFill="#f8f3f3" toggleGroup="$Genre" />
-      <RadioButton fx:id="fxJeu" layoutX="340.0" layoutY="234.0" mnemonicParsing="false" onAction="#getGenre" text="Jeunesse" textFill="#f5f0f0" toggleGroup="$Genre" />
-      <RadioButton fx:id="fxCom" layoutX="455.0" layoutY="234.0" mnemonicParsing="false" onAction="#getGenre" text="Comedie" textFill="#f8f3f3" toggleGroup="$Genre" />
-      <Label layoutX="52.0" layoutY="287.0" text="Description:" textFill="#ebe5e5" />
-      <TextField fx:id="fxDes" layoutX="157.0" layoutY="287.0" prefHeight="60.0" prefWidth="389.0" />
-      <Label layoutX="82.0" layoutY="385.0" text="Image:" textFill="#ebe5e5" />
-      <TextField fx:id="fxImg" layoutX="157.0" layoutY="380.0" prefHeight="31.0" prefWidth="187.0" />
-      <Button fx:id="btnAj" layoutX="283.0" layoutY="440.0" mnemonicParsing="false" onAction="#saveFilm" text="Ajouter demande" />
-      <TextField fx:id="fxDuree" layoutX="153.0" layoutY="179.0" prefHeight="31.0" prefWidth="187.0" />
-      <Label layoutX="92.0" layoutY="184.0" text="Durée:" textFill="#ebe5e5" />
-      <Button fx:id="fxAcc" layoutX="628.0" layoutY="9.0" mnemonicParsing="false" onAction="#getAcc" text="Accueil" />
-      <Button fx:id="fifi" layoutX="708.0" layoutY="9.0" mnemonicParsing="false" onAction="#getFil" text="Nos Film" />
+      <RadioButton fx:id="btnDra" layoutX="507.0" layoutY="265.0" mnemonicParsing="false" onAction="#getGenre" text="Drame" textFill="#1e1c1c">
+         <toggleGroup>
+            <ToggleGroup fx:id="Genre" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="fxJeu" layoutX="397.0" layoutY="297.0" mnemonicParsing="false" onAction="#getGenre" text="Jeunesse" textFill="#1e1c1c">
+         <toggleGroup>
+            <ToggleGroup fx:id="Genre" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="fxCom" layoutX="506.0" layoutY="297.0" mnemonicParsing="false" onAction="#getGenre" text="Comedie" textFill="#1e1c1c">
+         <toggleGroup>
+            <ToggleGroup fx:id="Genre" />
+         </toggleGroup>
+      </RadioButton>
+      <TextField fx:id="fxDes" alignment="TOP_LEFT" layoutX="396.0" layoutY="344.0" prefHeight="111.0" prefWidth="202.0" />
+      <TextField fx:id="fxImg" layoutX="304.0" layoutY="693.0" prefHeight="31.0" prefWidth="187.0" />
+      <Button fx:id="btnAj" layoutX="276.0" layoutY="746.0" mnemonicParsing="false" onAction="#saveFilm" text="Ajouter demande" />
+      <Button layoutX="510.0" layoutY="693.0" mnemonicParsing="false" onAction="#browse" text="Parcourir" />
+      <Button layoutX="436.0" layoutY="746.0" mnemonicParsing="false" onAction="#updateF" text="Modifier demande" />
+      <ImageView fx:id="imageView" fitHeight="178.0" fitWidth="272.0" layoutX="303.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="291.0" layoutY="127.0" text="Id Réalisateur:" textFill="#2c2a2a" />
+      <Label layoutX="310.0" layoutY="183.0" text="Nom Film:" textFill="#252323" />
+      <Label fx:id="fxG" layoutX="334.0" layoutY="265.0" text="Genre:" textFill="#1e1c1c" />
+      <Label layoutX="308.0" layoutY="344.0" text="Description:" textFill="#1e1c1c" />
+      <Label layoutX="295.0" layoutY="469.0" text="Ajouter Image:" textFill="#1e1c1c" />
+      <Label layoutX="334.0" layoutY="231.0" text="Durée:" textFill="#1e1c1c" />
    </children>
 </AnchorPane>

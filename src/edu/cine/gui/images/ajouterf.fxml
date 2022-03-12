@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.AjouterfController">
+   <children>
+      <TextField fx:id="fxNum" layoutX="373.0" layoutY="102.0" prefHeight="31.0" prefWidth="202.0" />
+      <Label layoutX="271.0" layoutY="107.0" text="Id Réalisateur:" textFill="#2c2a2a" />
+      <Label layoutX="290.0" layoutY="163.0" text="Nom Film:" textFill="#252323" />
+      <TextField fx:id="fxNom" layoutX="374.0" layoutY="158.0" prefHeight="31.0" prefWidth="202.0" />
+      <Label fx:id="fxG" layoutX="314.0" layoutY="245.0" text="Genre:" textFill="#1e1c1c" />
+      <RadioButton fx:id="btnAct" layoutX="384.0" layoutY="245.0" mnemonicParsing="false" onAction="#getGenre" text="Action" textFill="#1e1c1c">
+         <toggleGroup>
+            <ToggleGroup fx:id="Genre" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="btnDra" layoutX="487.0" layoutY="245.0" mnemonicParsing="false" onAction="#getGenre" text="Drame" textFill="#1e1c1c" toggleGroup="$Genre" />
+      <RadioButton fx:id="fxJeu" layoutX="377.0" layoutY="277.0" mnemonicParsing="false" onAction="#getGenre" text="Jeunesse" textFill="#1e1c1c" toggleGroup="$Genre" />
+      <RadioButton fx:id="fxCom" layoutX="486.0" layoutY="277.0" mnemonicParsing="false" onAction="#getGenre" text="Comedie" textFill="#1e1c1c" toggleGroup="$Genre" />
+      <Label layoutX="288.0" layoutY="324.0" text="Description:" textFill="#1e1c1c" />
+      <TextField fx:id="fxDes" layoutX="376.0" layoutY="324.0" prefHeight="111.0" prefWidth="202.0" />
+      <Label layoutX="275.0" layoutY="449.0" text="Ajouter Image:" textFill="#1e1c1c" />
+      <TextField fx:id="fxImg" layoutX="291.0" layoutY="704.0" prefHeight="31.0" prefWidth="187.0" />
+      <Button fx:id="btnAj" layoutX="281.0" layoutY="757.0" mnemonicParsing="false" onAction="#saveFilm" text="Ajouter demande" />
+      <TextField fx:id="fxDuree" layoutX="374.0" layoutY="206.0" prefHeight="31.0" prefWidth="202.0" />
+      <Label layoutX="314.0" layoutY="211.0" text="Durée:" textFill="#1e1c1c" />
+      <AnchorPane fx:id="paneFarRight" layoutX="26.0" layoutY="17.0" prefHeight="849.0" prefWidth="236.0" style="-fx-background-color: #5f687a;">
+         <children>
+            <ImageView fx:id="profileImage" fitHeight="111.0" fitWidth="167.0" layoutX="35.0" layoutY="14.0">
+               <image>
+                  <Image url="@../../../../../../../Downloads/png-transparent-circle-silhouette-logo-user-user-profile-green-facial-expression-nose-cartoon-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="27.0" layoutY="139.0" prefHeight="27.0" prefWidth="187.0" text="Monsieur Réalisateurs">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="223.0" onMouseClicked="#getFil" text="Film" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="263.0" onMouseClicked="#geta" text="Film Archivé" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="307.0" text="Profile" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="353.0" text="Se deconnecter" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="111.0" fitWidth="167.0" layoutX="35.0" layoutY="14.0">
+               <image>
+                  <Image url="@images/profile.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="8.0" layoutY="221.0">
+               <image>
+                  <Image url="@images/movieIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="6.0" layoutY="261.0">
+               <image>
+                  <Image url="@images/eventIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="305.0">
+               <image>
+                  <Image url="@images/profileIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="9.0" layoutY="351.0">
+               <image>
+                  <Image url="@images/exit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="table" layoutX="601.0" layoutY="168.0" prefHeight="680.0" prefWidth="945.0">
+         <columns>
+            <TableColumn fx:id="idid" prefWidth="59.0" text="Id" />
+            <TableColumn fx:id="nom" prefWidth="143.0" text="Nom du film" />
+            <TableColumn fx:id="gen" prefWidth="90.0" text="Genre" />
+            <TableColumn fx:id="dure" minWidth="6.0" prefWidth="79.0" text="durée" />
+            <TableColumn fx:id="date" minWidth="0.0" prefWidth="156.0" text="Date de Création" />
+            <TableColumn fx:id="des" minWidth="0.0" prefWidth="187.0" text="Description" />
+            <TableColumn fx:id="Arch" minWidth="0.0" prefWidth="187.0" text="Image" />
+            <TableColumn fx:id="edittt" minWidth="0.0" prefWidth="187.0" />
+         </columns>
+      </TableView>
+      <TextField fx:id="s" layoutX="601.0" layoutY="113.0" onAction="#search" prefHeight="27.0" prefWidth="221.0" promptText="Rechercher......................................" style="-fx-border-radius: 50;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="791.0" layoutY="115.0">
+         <image>
+            <Image url="@images/loop.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="284.0" layoutY="29.0" text="Ajouter demande d'un film" textFill="#1b1a1a">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="498.0" layoutY="704.0" mnemonicParsing="false" onAction="#browse" text="Parcourir" />
+      <FontAwesomeIconView fx:id="refresh" fill="#1b1a1a" glyphName="REFRESH" layoutX="1496.0" layoutY="143.0" onMouseClicked="#refreshr" size="45" text="" wrappingWidth="32.428571701049805" />
+      <Button layoutX="440.0" layoutY="757.0" mnemonicParsing="false" onAction="#updateF" text="Modifier demande" />
+      <FontAwesomeIconView />
+      <FontAwesomeIconView fx:id="h1" fill="#171616" glyphName="EDIT" layoutX="1435.0" layoutY="148.0" onMouseClicked="#getedit1" size="45" />
+      <ImageView fx:id="imageView" fitHeight="178.0" fitWidth="272.0" layoutX="304.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

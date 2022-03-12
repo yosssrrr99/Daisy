@@ -19,6 +19,10 @@ public class Compte {
     public Compte() {
     }
 
+    public Compte(String mail) {
+        this.mail = mail;
+    }
+ 
     public Compte(String userName, String mail, String mdp, String role, String Image) {
         this.userName = userName;
         this.mail = mail;
@@ -26,6 +30,7 @@ public class Compte {
         this.role = role;
         this.Image = Image;
     }
+    
 
     public String getUserName() {
         return userName;

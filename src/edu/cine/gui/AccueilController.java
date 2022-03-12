@@ -7,9 +7,14 @@ package edu.cine.gui;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import edu.cine.entities.Compte;
 import edu.cine.entities.Film;
+import edu.cine.services.FilmCRUD;
 import edu.cine.utils.MyConnection;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +23,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,16 +37,26 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+
 /**
  * FXML Controller class
  *
@@ -51,8 +67,7 @@ public class AccueilController implements Initializable {
     /**
      * Initializes the controller class.
      */
-     
-        String query = null;
+    String query = null;
     Connection cnx = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -62,35 +77,61 @@ public class AccueilController implements Initializable {
     @FXML
     private TableColumn<Film, String> editcol;
     @FXML
-    private TableView<Film> table;
+    public TableView<Film> table;
+
+    int idFilm;
+
+   
     @FXML
-    private TableColumn<Film, Integer> idid;
+    private TableColumn<Film, String> nom;
     @FXML
-    private TableColumn<Film, String>  nom;
+    private TableColumn<Film, String> gen;
     @FXML
-    private TableColumn<Film, String>  gen;
-    @FXML
-    private TableColumn<Film, String>  etat;
-    @FXML
-    private TableColumn<Film, Integer> Rea;
-    @FXML
-    private TableColumn<Film, String> des;
-    
+    private TableColumn<Film, String> etat;
+
     @FXML
     private TableColumn<Film, Integer> dure;
     @FXML
-    private TableColumn<Film,Integer> Arch;
+    private TableColumn<Film, Integer> Arch;
+
+    @FXML
+    private TableColumn<Film, String> date;
+    @FXML
+    private AnchorPane paneFarRight;
+    @FXML
+    private ImageView profileImage;
+    @FXML
+    private TableColumn<Film, Integer> Réa;
+    @FXML
+    private FontAwesomeIconView refresh;
+    @FXML
+    private TextField s;
+    @FXML
+    private TableColumn<Film, String> Image;
+    @FXML
+    private TableColumn<Film, String> Description;
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private TableColumn<Film, Integer> idid;
+    @FXML
+    private TableColumn<Film, String> mim;
+    FilmCRUD fc = new FilmCRUD();
+    @FXML
+    private Label momo;
    
-     
-
-
+  
+    
     /**
      * Initializes the controller class.
      */
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        
         loadDate();
     }
+    
   
 
     private void getAddView(MouseEvent event) {
@@ -108,28 +149,30 @@ public class AccueilController implements Initializable {
 
     private void refreshTable() {
 
-       
- try {
+        try {
 
             filmListe.clear();
 
-            query = "SELECT * FROM film";
+            query = "SELECT f.* ,c.mail FROM film f,compte c, realisateur r,client cc where r.NumRea=f.NumRea and c.userName=cc.userName and cc.idC=r.idC";
 
             preparedStatement = cnx.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-               Film f = new Film();
-               f.setIdF(resultSet.getInt("idF"));
-              f.setNomF(resultSet.getString("nomF"));
-               f.setGenre(resultSet.getString("Genre"));
-               f.setArchive(resultSet.getBoolean("Archive"));
-               f.setEtatAcc(resultSet.getString("EtatAcc"));
-               f.setNumRea(resultSet.getInt("NumRea"));
-               f.setImage(resultSet.getString("Image"));
-               f.setDescription(resultSet.getString("Description"));
-               
-               f.setDuree(resultSet.getInt("duree"));
+                Film f = new Film();
+                Compte c = new Compte();
+                f.setIdF(resultSet.getInt("idF"));
+                f.setNomF(resultSet.getString("nomF"));
+                f.setGenre(resultSet.getString("Genre"));
+                f.setArchive(resultSet.getBoolean("Archive"));
+                f.setEtatAcc(resultSet.getString("EtatAcc"));
+                f.setNumRea(resultSet.getInt("NumRea"));
+                f.setImage(resultSet.getString("Image"));
+                f.setDateDispo(resultSet.getTimestamp("dateDispo"));
+                f.setDescription(resultSet.getString("Description"));
+                c.setMail(resultSet.getString("mail"));
+
+                f.setDuree(resultSet.getInt("duree"));
                 filmListe.add(f);
                 table.setItems(filmListe);
 
@@ -138,7 +181,6 @@ public class AccueilController implements Initializable {
             System.err.println(ex.getMessage());
         }
 
-              
     }
 
     private void close(MouseEvent event) {
@@ -149,18 +191,18 @@ public class AccueilController implements Initializable {
     private void loadDate() {
         cnx = MyConnection.getInstance().getCnx();
 
-   refreshTable();
-
-        idid.setCellValueFactory(new PropertyValueFactory<Film,Integer>("idF"));
+        refreshTable();
+        mim.setCellValueFactory(new PropertyValueFactory<Film, String>("mail"));
+        Image.setCellValueFactory(new PropertyValueFactory<Film, String>("Image"));
+        idid.setCellValueFactory(new PropertyValueFactory<Film, Integer>("idF"));
+        date.setCellValueFactory(new PropertyValueFactory<Film, String>("dateDispo"));
         nom.setCellValueFactory(new PropertyValueFactory<Film, String>("nomF"));
         gen.setCellValueFactory(new PropertyValueFactory<Film, String>("Genre"));
         etat.setCellValueFactory(new PropertyValueFactory<Film, String>("EtatAcc"));
-        Rea.setCellValueFactory(new PropertyValueFactory<Film, Integer>("NumRea"));
-        des.setCellValueFactory(new PropertyValueFactory<Film, String>("Description"));
+        Réa.setCellValueFactory(new PropertyValueFactory<Film, Integer>("NumRea"));
+        Description.setCellValueFactory(new PropertyValueFactory<Film, String>("Description"));
         dure.setCellValueFactory(new PropertyValueFactory<Film, Integer>("duree"));
-        Arch.setCellValueFactory(new PropertyValueFactory<Film,Integer>("Archive"));
-
-    
+        Arch.setCellValueFactory(new PropertyValueFactory<Film, Integer>("Archive"));
 
         Callback<TableColumn<Film, String>, TableCell<Film, String>> cellFoctory = (TableColumn<Film, String> param) -> {
             final TableCell<Film, String> cell = new TableCell<Film, String>() {
@@ -178,6 +220,7 @@ public class AccueilController implements Initializable {
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
                         FontAwesomeIconView edittIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
                         FontAwesomeIconView viewIcon = new FontAwesomeIconView(FontAwesomeIcon.EYE);
+                        FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.CALENDAR_CHECK_ALT);
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
@@ -189,96 +232,154 @@ public class AccueilController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#000000;"
                         );
-                         edittIcon.setStyle(
+                        edittIcon.setStyle(
                                 " -fx-cursor: hand ;"
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#000000;"
                         );
-
 
                         viewIcon.setStyle(
                                 " -fx-cursor: hand ;"
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#8a0a0a;"
                         );
-                        
+                        icon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#000000;"
+                        );
+
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
                             System.out.println("houniiiiiiii");
-                            try {
-                               film = table.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM film WHERE idF =" + film.getIdF();
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Confirmation de suppression du film");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Vouliez vous vraiment supprimer le film ? ");
+                            Optional<ButtonType> action = alert.showAndWait();
 
-                                preparedStatement = cnx.prepareStatement(query);
-                                preparedStatement.executeUpdate();
-                                refreshTable();
+                            if (action.get() == ButtonType.OK) {
+                                try {
+                                    film = table.getSelectionModel().getSelectedItem();
+                                    query = "DELETE FROM film WHERE idF =" + film.getIdF();
 
-                            } catch (SQLException ex) {
-                                System.err.println(ex.getMessage());
+                                    preparedStatement = cnx.prepareStatement(query);
+                                    preparedStatement.executeUpdate();
+                                    refreshTable();
+
+                                } catch (SQLException ex) {
+                                    System.err.println(ex.getMessage());
+                                }
                             }
-
                         });
                         editIcon.setOnMouseClicked((MouseEvent event1) -> {
-//
-                           try {
-                               film= table.getSelectionModel().getSelectedItem();
-                                query = "UPDATE film SET EtatAcc='Accepté' WHERE idF= " + film.getIdF();
+// System.out.println("houniiiiiiii");
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Confirmation d'acceptation du film");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Vouliez vous vraiment accepter le film ? ");
+                            Optional<ButtonType> action = alert.showAndWait();
 
-                                preparedStatement = cnx.prepareStatement(query);
+                            if (action.get() == ButtonType.OK) {
+                                
+                                try {
+                                    film = table.getSelectionModel().getSelectedItem();
+                                    query = "UPDATE film SET EtatAcc='Accepté' WHERE idF= " + film.getIdF();
 
-                                preparedStatement.executeUpdate();
+                                    preparedStatement = cnx.prepareStatement(query);
 
-                                refreshTable();
+                                    preparedStatement.executeUpdate();
+//                                     List<List<String>>  liste = fc.afficheMail();
+//                                       for (int i = 0; i < liste.size(); i++) {
+//                                             System.out.println(liste);
+//                                            mim.setCellValueFactory(new PropertyValueFactory<Film, Integer>"");
+//                                       }
 
-                            } catch (SQLException ex) {
-                                System.err.println(ex.getMessage());
+                                    refreshTable();
+
+                                } catch (SQLException ex) {
+                                    System.err.println(ex.getMessage());
+                                }
                             }
-                            });
-                        edittIcon.setOnMouseClicked((MouseEvent event1) -> {
-//
-                          
-                            try {
-                               film= table.getSelectionModel().getSelectedItem();
-                                query = "UPDATE film SET Archive=1 WHERE idF= " + film.getIdF();
-
-                                preparedStatement = cnx.prepareStatement(query);
-
-                                preparedStatement.executeUpdate();
-
-                                refreshTable();
-
-                            } catch (SQLException ex) {
-                                System.err.println(ex.getMessage());
-                            }
-                            });
-
-                            viewIcon.setOnMouseClicked((MouseEvent event0) -> {
-
-                            FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("Reservationnn.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                System.out.println(ex.getMessage());
-                            }
-                            
-//                            ReservaController addReservController = loader.getController();
-//                            addReservController. insertRecord();
-                                                     
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
-    
                         });
+                        edittIcon.setOnMouseClicked((MouseEvent event1) -> {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Confirmation d'archivage du film");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Vouliez vous vraiment archiver le film ? ");
+                            Optional<ButtonType> action = alert.showAndWait();
 
+                            if (action.get() == ButtonType.OK) {
 
-                        HBox managebtn = new HBox(editIcon, deleteIcon,edittIcon,viewIcon);
+                                try {
+                                    film = table.getSelectionModel().getSelectedItem();
+                                    query = "UPDATE film SET Archive=1 WHERE idF= " + film.getIdF();
+
+                                    preparedStatement = cnx.prepareStatement(query);
+
+                                    preparedStatement.executeUpdate();
+
+                                    refreshTable();
+
+                                } catch (SQLException ex) {
+                                    System.err.println(ex.getMessage());
+                                }
+                            }
+                        });
+                        
+
+                        viewIcon.setOnMouseClicked((MouseEvent event1) -> {
+//                            Film selected = table.getSelectionModel().getSelectedItem();
+//                             int idd = selected.getIdF();
+//                             
+//                          productDetails.setProductID(PM.recupProduit(productID));
+//                            FXMLLoader loader = new FXMLLoader();
+//                            loader.setLocation(getClass().getResource("detailFilm.fxml"));
+//                            try {
+//                                loader.load();
+//                            } catch (IOException ex) {
+//                                System.out.println(ex.getMessage());
+//                            }
+//
+//                            Parent parent = loader.getRoot();
+//                            Stage stage = new Stage();
+//                            stage.setScene(new Scene(parent));
+//                            stage.initStyle(StageStyle.UTILITY);
+//                            stage.show();
+                            FXMLLoader Loader = new FXMLLoader(getClass().getResource("detailFilm.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DetailFilmController FilmDetail = Loader.getController();
+            Film selected = table.getSelectionModel().getSelectedItem();
+        idFilm = selected.getIdF();
+        FilmCRUD fc = new FilmCRUD();
+        FilmDetail.setFilmID(fc.recupFilm(idFilm));
+            
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event1.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+           
+                            
+
+                        });
+                        
+                        
+                        icon.setOnMouseClicked((MouseEvent event1) -> {
+                        
+                        
+                            });
+
+                        HBox managebtn = new HBox(editIcon, deleteIcon, edittIcon, viewIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                         HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
                         HBox.setMargin(viewIcon, new Insets(2, 2, 0, 3));
                         HBox.setMargin(viewIcon, new Insets(2, 2, 0, 3));
+                       // HBox.setMargin(icon, new Insets(2, 2, 0, 3));
 
                         setGraphic(managebtn);
 
@@ -297,5 +398,62 @@ public class AccueilController implements Initializable {
 
     }
 
+    @FXML
+    private void refreshr(MouseEvent event) {
+        refreshTable();
+    }
+
+    @FXML
+    private void search(ActionEvent event) {
+        filmListe.setAll();
+        int n = 0;
+
+        try {
+
+            String req = "SELECT * FROM film WHERE nomF = ? ";
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setString(1, String.valueOf(s.getText()));
+            ResultSet res = pst.executeQuery();
+            Film f = new Film();
+            while (res.next()) {
+                n = 2;
+
+                System.out.println("lenaaa");
+                f.setIdF(res.getInt("idF"));
+                f.setNomF(res.getString("nomF"));
+                f.setGenre(res.getString("Genre"));
+                f.setArchive(res.getBoolean("Archive"));
+                f.setEtatAcc(res.getString("EtatAcc"));
+                f.setNumRea(res.getInt("NumRea"));
+                f.setImage(res.getString("Image"));
+                f.setDescription(res.getString("Description"));
+                f.setDateDispo(res.getTimestamp("DateDispo"));
+                f.setDuree(res.getInt("duree"));
+                filmListe.add(f);
+                table.setItems(filmListe);
+
+                table.setItems(filmListe);
+            }
+            Image.setCellValueFactory(new PropertyValueFactory<Film, String>("Image"));
+            date.setCellValueFactory(new PropertyValueFactory<Film, String>("dateDispo"));
+            nom.setCellValueFactory(new PropertyValueFactory<Film, String>("nomF"));
+            gen.setCellValueFactory(new PropertyValueFactory<Film, String>("Genre"));
+            etat.setCellValueFactory(new PropertyValueFactory<Film, String>("EtatAcc"));
+            Réa.setCellValueFactory(new PropertyValueFactory<Film, Integer>("NumRea"));
+            Description.setCellValueFactory(new PropertyValueFactory<Film, String>("Description"));
+            dure.setCellValueFactory(new PropertyValueFactory<Film, Integer>("duree"));
+            Arch.setCellValueFactory(new PropertyValueFactory<Film, Integer>("Archive"));
+            table.setItems(filmListe);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (n == 0) {
+            Alert alt = new Alert(Alert.AlertType.ERROR, "il n'y a pas un film de ce nom", javafx.scene.control.ButtonType.OK);
+            alt.showAndWait();
+            loadDate();
+        }
+    }
+     
    
 }

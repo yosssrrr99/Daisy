@@ -215,46 +215,47 @@ public class AvisCRUD {
                           //System.out.println("MaxAvis: " + av.get());
         return null;
    }
-  public void AfficherMaxMoy2() {
-      List<Avis> listeAv = new ArrayList();
+  public List<List<String>> AfficherMaxMoy2() {
+        List<List<String>> liste = new ArrayList<>();
                 AvisCRUD ac = new AvisCRUD();
                 int a =ac.AfficherMaxMoy();
                  try {;
 
                        
-       String requete = "SELECT f.nomF,f.Genre,f.Image,f.Description,f.duree,f.dateDispo, a.MoyenneAvis,a.Commentaire FROM film f ,avis a WHERE f.idF=a.idF and f.idF='"+a+"'";
+       String requete = "SELECT film.*, avis.MoyenneAvis, reservation.DateDeb,reservation.DateFin FROM film ,avis ,reservation   WHERE reservation.idF=film.idF and film.idF=avis.idF and film.idF='"+a+"'";
                          
                          
             Statement st = cnx.createStatement();
-            ResultSet res = st.executeQuery(requete);
+            ResultSet rs = st.executeQuery(requete);
 
-            while (res.next()) {
-                Avis a1 = new Avis();
-                Film f=new Film();
+            while (rs.next()) {
+                 List<String> listString = new ArrayList<>();
+                
+                listString.add(rs.getString("nomF"));
+                listString.add(rs.getString("Genre"));
+                listString.add(rs.getString("Archive"));
+                listString.add(rs.getString("EtatAcc"));
+                listString.add(rs.getString("NumRea"));
+                listString.add(rs.getString("Image"));
+                 listString.add(rs.getString("Duree"));
+                listString.add(rs.getString("Description"));
+                //listString.add(rs.getString("idRes"));
+                listString.add(rs.getString("DateDeb"));
+                listString.add(rs.getString("DateFin"));
+                listString.add(rs.getString("idF"));
+                 listString.add(rs.getString("MoyenneAvis"));
+                //System.out.println("bonjour");
+                
+                liste.add(listString);
                
-                f.setNomF(res.getString("nomF"));
-                f.setGenre(res.getString("Genre"));
-                f.setImage(res.getString("Image"));
-                f.setDescription(res.getString("Description"));
-                f.setDuree(res.getInt("duree"));
-                f.setDateDispo(res.getTimestamp("datedispo"));
-                a1.setMoyenneAvis(res.getFloat("MoyenneAvis"));
-                a1.setCommentaire(res.getString("commentaire"));
-                System.out.println(f+"      " +a1);
-            };
-            
-
-                    } catch (SQLException e) {
-                        System.out.println("erreur");
-                    }
-                
-                    
-  
-                   
-                
+            }
+        } catch (SQLException ex) {
+            System.out.println("mochkla");
+            System.out.println(ex.getMessage());
+        }
+        return liste;
     }
 }
- 
 
     
  

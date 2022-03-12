@@ -1,22 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #7a0012;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.AccueilClientController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cine.gui.AccueilClientController">
    <children>
-      <TableView fx:id="table" layoutX="51.0" layoutY="88.0" prefHeight="439.0" prefWidth="672.0">
-         <columns>
-            <TableColumn fx:id="fxid" prefWidth="110.0" text="idF" />
-            <TableColumn fx:id="nom" prefWidth="99.0" text="nomF" />
-            <TableColumn fx:id="gen" minWidth="6.0" prefWidth="119.0" text="Genre" />
-            <TableColumn fx:id="des" minWidth="0.0" prefWidth="123.0" text="Description" />
-            <TableColumn fx:id="dure" minWidth="0.0" prefWidth="101.0" text="duree" />
-            <TableColumn fx:id="editcol" minWidth="0.0" prefWidth="119.0" />
-         </columns>
-      </TableView>
-      <Button fx:id="arch" layoutX="730.0" layoutY="88.0" mnemonicParsing="false" onAction="#getarch" prefHeight="31.0" prefWidth="211.0" text="Archive" />
+      <Label layoutX="337.0" layoutY="21.0" text="Liste des Films">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Pane layoutX="28.0" layoutY="107.0" prefHeight="472.0" prefWidth="358.0">
+         <children>
+            <VBox fx:id="movieInformation" alignment="CENTER" layoutX="30.0" prefHeight="450.0" prefWidth="366.0" styleClass="yy">
+               <children>
+                  <HBox prefHeight="46.0" prefWidth="266.0">
+                     <children>
+                        <Label fx:id="titreFilm" prefHeight="46.0" prefWidth="277.0" text="BLACKLIGHT" textFill="#141414">
+                           <font>
+                              <Font name="Cambria" size="35.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ImageView fitHeight="100.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Blacklight.jpeg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER" prefHeight="66.0" prefWidth="266.0">
+                     <opaqueInsets>
+                        <Insets bottom="10.0" top="10.0" />
+                     </opaqueInsets>
+                     <children>
+                        <Text fx:id="descriptionFilm" fill="#434242" layoutX="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Travis Block intervient pour le compte du FBI lorsque toutes les autres options ontété épuisées. Ses méthodes impliquent souvent la manière forte." wrappingWidth="340.13671875" x="40.0" y="40.0">
+                           <font>
+                              <Font name="Cambria Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="17.0" prefWidth="266.0">
+                     <children>
+                        <Separator prefHeight="11.0" prefWidth="409.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="266.0">
+                     <children>
+                        <Label fx:id="dateReservation" prefHeight="34.0" prefWidth="199.0" text="Date:   06/03/2020" textFill="#3c3c3c">
+                           <font>
+                              <Font name="Cambria" size="23.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" top="10.0" />
+                     </opaqueInsets>
+                  </HBox>
+                  <Separator prefHeight="11.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Label fx:id="heureReservation" prefHeight="34.0" prefWidth="141.0" text="Heure: 15:30" textAlignment="CENTER" textFill="#3c3c3c">
+                     <font>
+                        <Font name="Cambria" size="23.0" />
+                     </font>
+                  </Label>
+                  <Separator prefHeight="11.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Label fx:id="salleReservation" prefHeight="34.0" prefWidth="123.0" text="Salle : A387" textFill="#2c2a2a">
+                     <font>
+                        <Font name="Cambria" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
